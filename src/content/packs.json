@@ -104,5 +104,346 @@
     "planTemplateId": "plan-manifest",
     "gesture": "Both hands over the heart, then open outward — receiving, then releasing into action",
     "identityScript": "What I want is already in motion because I move daily. I see evidence everywhere, I say thank you out loud, and I take the step."
+  },
+  {
+    "id": "pack-icon-ronaldo",
+    "module": "icons",
+    "name": "Ronaldo Mindset",
+    "description": "The relentless-finisher standard: obsessive repetition, competitive fire, and a body that shows up every single day — inspired by the training mindset Cristiano Ronaldo is known for.",
+    "traitIds": ["t-feet-shows-up", "t-hands-obsessive-reps", "t-chest-competitive-fire", "t-head-single-focus", "t-hands-finisher"],
+    "emotions": [
+      { "id": "e-determination", "intensity": 9 },
+      { "id": "e-confidence", "intensity": 8 },
+      { "id": "e-enthusiasm", "intensity": 5 }
+    ],
+    "planTemplateId": "plan-core",
+    "gesture": "Plant both feet wide, chest up, one slow breath — claim the ground you stand on",
+    "identityScript": "Talent opened the door; my repetitions keep it open. While others rest, I take one more rep. Pressure is my home ground.",
+    "inspiration": { "label": "Cristiano Ronaldo", "status": "living" }
+  },
+  {
+    "id": "pack-icon-kobe",
+    "module": "icons",
+    "name": "Kobe's Energy",
+    "description": "The 4 a.m. standard: single-point focus, craftsman's detail, and a competitive engine that never idles — inspired by the work ethic Kobe Bryant made famous.",
+    "traitIds": ["t-feet-morning-ritual", "t-hands-obsessive-reps", "t-head-single-focus", "t-chest-competitive-fire", "t-hands-craft"],
+    "emotions": [
+      { "id": "e-determination", "intensity": 9 },
+      { "id": "e-confidence", "intensity": 7 },
+      { "id": "e-clarity", "intensity": 5 }
+    ],
+    "planTemplateId": "plan-core",
+    "gesture": "Set the jaw, lower the chin slightly, eyes locked on one target — then move",
+    "identityScript": "The early hours belong to me. I don't fear the moment — I've already lived it a thousand times in practice.",
+    "inspiration": { "label": "Kobe Bryant", "status": "deceased" }
+  },
+  {
+    "id": "pack-icon-ali",
+    "module": "icons",
+    "name": "The Greatest — Ali's Spirit",
+    "description": "Loud self-belief backed by louder work: showman's flair, an unbreakable mind, and courage that talks first and delivers after — inspired by Muhammad Ali.",
+    "traitIds": ["t-head-self-belief", "t-chest-courage", "t-mouth-showman", "t-mouth-assertive", "t-head-hard-mind"],
+    "emotions": [
+      { "id": "e-courage", "intensity": 9 },
+      { "id": "e-confidence", "intensity": 9 },
+      { "id": "e-playfulness", "intensity": 6 }
+    ],
+    "planTemplateId": "plan-core",
+    "gesture": "Light on the feet, two quick steps, chin up with a half-smile",
+    "identityScript": "I called myself the greatest before I knew I was — then I did the work to make it true. My confidence is loud; my grind is louder.",
+    "inspiration": { "label": "Muhammad Ali", "status": "deceased" }
+  },
+  {
+    "id": "pack-icon-bruce-lee",
+    "module": "icons",
+    "name": "The Bruce Lee Blueprint",
+    "description": "One kick, ten thousand times: ruthless simplicity, first-principles training, and stillness under fire — inspired by Bruce Lee's philosophy of mastery.",
+    "traitIds": ["t-hands-obsessive-reps", "t-head-single-focus", "t-hands-craft", "t-chest-steadiness", "t-head-first-principles"],
+    "emotions": [
+      { "id": "e-determination", "intensity": 8 },
+      { "id": "e-clarity", "intensity": 7 },
+      { "id": "e-peace", "intensity": 5 }
+    ],
+    "planTemplateId": "plan-core",
+    "gesture": "One slow horizontal palm sweep — clearing away everything non-essential",
+    "identityScript": "I absorb what is useful, discard what is not, and add what is uniquely my own. Simplicity is the last stage of mastery, and I train toward it daily.",
+    "inspiration": { "label": "Bruce Lee", "status": "deceased" }
+  },
+  {
+    "id": "pack-icon-kalam",
+    "module": "icons",
+    "name": "Kalam Mindset",
+    "description": "Humble curiosity with a builder's hands: dream big, stay simple, work daily — inspired by Dr. A.P.J. Abdul Kalam, the People's President.",
+    "traitIds": ["t-head-growth-mindset", "t-chest-warmth", "t-hands-craft", "t-feet-tiny-steps", "t-mouth-kind-selftalk"],
+    "emotions": [
+      { "id": "e-gratitude", "intensity": 7 },
+      { "id": "e-clarity", "intensity": 7 },
+      { "id": "e-compassion", "intensity": 6 }
+    ],
+    "planTemplateId": "plan-core",
+    "gesture": "Palms together briefly, then opening into a small forward motion — gratitude turned into work",
+    "identityScript": "A dream is not what I see in sleep — it is the thing that will not let me sleep. I stay simple, I stay curious, and I build a little every day.",
+    "inspiration": { "label": "A.P.J. Abdul Kalam", "status": "deceased" }
+  },
+  {
+    "id": "pack-icon-musashi",
+    "module": "icons",
+    "name": "Miyamoto Musashi",
+    "description": "The lone samurai's way: polish the self daily, stay calm inside any duel, and win first in the mind. Today's only opponent is yesterday's you.",
+    "traitIds": ["t-head-calm-pressure", "t-hands-craft", "t-head-single-focus", "t-feet-shows-up", "t-chest-steadiness"],
+    "emotions": [
+      { "id": "e-determination", "intensity": 8 },
+      { "id": "e-clarity", "intensity": 7 },
+      { "id": "e-peace", "intensity": 6 }
+    ],
+    "planTemplateId": "plan-core",
+    "gesture": "Slow exhale, shoulders drop, one deliberate step forward — the duel already won in the mind",
+    "identityScript": "I polish my body and mind like a sword, daily and without ceremony. Today I aim to defeat only the person I was yesterday.",
+    "inspiration": { "label": "Miyamoto Musashi", "status": "public-domain" }
+  },
+  {
+    "id": "pack-icon-srk",
+    "module": "icons",
+    "name": "SRK's Energy",
+    "description": "Charm as a work ethic: storyteller's warmth, showman's voltage, and the will to out-energize every room — inspired by the off-screen drive Shah Rukh Khan is known for.",
+    "traitIds": ["t-mouth-showman", "t-chest-warmth", "t-mouth-storyteller", "t-hands-initiative", "t-head-optimism"],
+    "emotions": [
+      { "id": "e-enthusiasm", "intensity": 8 },
+      { "id": "e-warmth", "intensity": 7 },
+      { "id": "e-confidence", "intensity": 7 }
+    ],
+    "planTemplateId": "plan-core",
+    "gesture": "One hand over the heart, then extended out to the room — charm, given away",
+    "identityScript": "I don't sell work, I sell dreams — and I out-work everyone to earn that right. My charm is effort made visible.",
+    "inspiration": { "label": "Shah Rukh Khan", "status": "living" }
+  },
+  {
+    "id": "pack-icon-kohli",
+    "module": "icons",
+    "name": "Kohli's Fire",
+    "description": "Intent on every ball: competitive fire, non-negotiable fitness, and a finisher's refusal to leave the job half-done — inspired by the standards Virat Kohli plays by.",
+    "traitIds": ["t-chest-competitive-fire", "t-feet-shows-up", "t-hands-finisher", "t-mouth-assertive", "t-head-decisive"],
+    "emotions": [
+      { "id": "e-determination", "intensity": 9 },
+      { "id": "e-courage", "intensity": 7 },
+      { "id": "e-enthusiasm", "intensity": 7 }
+    ],
+    "planTemplateId": "plan-core",
+    "gesture": "One hard clap, then point at the target — switched on",
+    "identityScript": "Fitness is my religion and the contest is my stage. I bring intent to every single ball of this day.",
+    "inspiration": { "label": "Virat Kohli", "status": "living" }
+  },
+  {
+    "id": "pack-icon-arjuna",
+    "module": "icons",
+    "name": "Arjuna's Focus",
+    "description": "The archer who saw only the eye of the bird: single-point aim, disciplined practice, and calm inside the biggest moments. A skill study from the Mahabharata.",
+    "traitIds": ["t-head-single-focus", "t-hands-craft", "t-chest-steadiness", "t-feet-shows-up", "t-head-calm-pressure"],
+    "emotions": [
+      { "id": "e-clarity", "intensity": 8 },
+      { "id": "e-determination", "intensity": 8 },
+      { "id": "e-peace", "intensity": 5 }
+    ],
+    "planTemplateId": "plan-core",
+    "gesture": "Draw an invisible bowstring — slow breath in, steady aim, release",
+    "identityScript": "I see only the eye of the bird. When my aim wavers, I return to the target — and that return, repeated, is the whole practice.",
+    "inspiration": { "label": "Arjuna (Mahabharata)", "status": "public-domain" }
+  },
+  {
+    "id": "pack-icon-einstein",
+    "module": "icons",
+    "name": "Einstein Mindset",
+    "description": "Passionate curiosity over raw talent: first-principles thinking, playful thought experiments, and deep-work patience — inspired by how Albert Einstein worked.",
+    "traitIds": ["t-head-first-principles", "t-mouth-asks-questions", "t-chest-playfulness", "t-head-growth-mindset", "t-hands-deep-work"],
+    "emotions": [
+      { "id": "e-clarity", "intensity": 8 },
+      { "id": "e-playfulness", "intensity": 6 },
+      { "id": "e-willingness", "intensity": 6 }
+    ],
+    "planTemplateId": "plan-core",
+    "gesture": "Look up and slightly aside, half-smile — following the thought experiment wherever it goes",
+    "identityScript": "I have no special talent — I am passionately curious. I play with a question until it opens, and I am not ashamed to sit with it for hours.",
+    "inspiration": { "label": "Albert Einstein", "status": "public-domain" }
+  },
+  {
+    "id": "pack-screen-genius-inventor",
+    "module": "screen",
+    "name": "The Genius Inventor",
+    "description": "Billionaire-inventor energy: rapid wit, engineering obsession, and unshakeable confidence under fire. Every problem is buildable — including you.",
+    "traitIds": ["t-head-first-principles", "t-head-decisive", "t-chest-playfulness", "t-hands-bold-action", "t-head-self-belief"],
+    "emotions": [
+      { "id": "e-confidence", "intensity": 8 },
+      { "id": "e-playfulness", "intensity": 7 },
+      { "id": "e-clarity", "intensity": 7 }
+    ],
+    "planTemplateId": "plan-actor",
+    "gesture": "Sketch an invisible interface in the air with one hand, then snap into the decision",
+    "identityScript": "Every problem is an engineering problem, including me. I build my way out — usually while talking."
+  },
+  {
+    "id": "pack-screen-night-vigilante",
+    "module": "screen",
+    "name": "The Night Vigilante",
+    "description": "Discipline as a superpower: prepared while others sleep, still in chaos, unbreakable code. The calm in the room is you.",
+    "traitIds": ["t-head-hard-mind", "t-hands-craft", "t-head-single-focus", "t-chest-steadiness", "t-feet-morning-ritual"],
+    "emotions": [
+      { "id": "e-determination", "intensity": 9 },
+      { "id": "e-clarity", "intensity": 7 },
+      { "id": "e-peace", "intensity": 4 }
+    ],
+    "planTemplateId": "plan-actor",
+    "gesture": "Go completely still, lower the voice half a step, plant both feet — become the calm in the room",
+    "identityScript": "My discipline is my superpower. I prepare while others sleep, and I hold my code exactly when it's hardest to hold."
+  },
+  {
+    "id": "pack-screen-underdog-champion",
+    "module": "screen",
+    "name": "The Underdog Champion",
+    "description": "Heart over odds: keep moving forward, round after round, with a kind word for yourself between the hits.",
+    "traitIds": ["t-chest-courage", "t-feet-shows-up", "t-head-growth-mindset", "t-hands-finisher", "t-mouth-kind-selftalk"],
+    "emotions": [
+      { "id": "e-determination", "intensity": 9 },
+      { "id": "e-courage", "intensity": 8 },
+      { "id": "e-gratitude", "intensity": 5 }
+    ],
+    "planTemplateId": "plan-actor",
+    "gesture": "Both fists up by the chin, one sharp exhale, a single bounce on the toes",
+    "identityScript": "It's not about how hard I hit — it's how hard I can get hit and keep moving forward. Round by round, I'm still here."
+  },
+  {
+    "id": "pack-screen-free-spirit",
+    "module": "screen",
+    "name": "The Free Spirit",
+    "description": "Joy as a life strategy: says yes to the detour, narrates her own adventure, and is unapologetically her own favorite person.",
+    "traitIds": ["t-chest-enthusiasm", "t-chest-playfulness", "t-mouth-storyteller", "t-hands-bold-action", "t-head-optimism"],
+    "emotions": [
+      { "id": "e-joy", "intensity": 8 },
+      { "id": "e-enthusiasm", "intensity": 8 },
+      { "id": "e-courage", "intensity": 6 }
+    ],
+    "planTemplateId": "plan-actor",
+    "gesture": "Both arms thrown out, palms open, a quarter-spin — the world is a festival",
+    "identityScript": "I am my own favorite person. I say yes to the train, the detour, and the dance — life is too delicious to sip carefully."
+  },
+  {
+    "id": "pack-screen-unstoppable-professional",
+    "module": "screen",
+    "name": "The Unstoppable Professional",
+    "description": "Quiet, immaculate focus: one task, done completely, then the next. Not the storm — the stillness inside it.",
+    "traitIds": ["t-head-single-focus", "t-hands-craft", "t-chest-steadiness", "t-head-decisive", "t-feet-early-arrival"],
+    "emotions": [
+      { "id": "e-determination", "intensity": 9 },
+      { "id": "e-clarity", "intensity": 7 },
+      { "id": "e-peace", "intensity": 5 }
+    ],
+    "planTemplateId": "plan-actor",
+    "gesture": "Adjust the cuffs, one slow neck roll, exhale — back to work",
+    "identityScript": "I am not the storm; I am the focus inside it. One task, finished completely. Then the next."
+  },
+  {
+    "id": "pack-screen-sherlock",
+    "module": "screen",
+    "name": "Sherlock Holmes",
+    "description": "The deduction master himself: sees what others only look at, questions everything, and treats attention as the sharpest instrument in the room.",
+    "traitIds": ["t-head-observer", "t-head-first-principles", "t-mouth-asks-questions", "t-head-single-focus", "t-hands-deep-work"],
+    "emotions": [
+      { "id": "e-clarity", "intensity": 9 },
+      { "id": "e-confidence", "intensity": 7 },
+      { "id": "e-playfulness", "intensity": 5 }
+    ],
+    "planTemplateId": "plan-actor",
+    "gesture": "Steeple the fingers under the chin, eyes narrowing at the detail everyone else missed",
+    "identityScript": "When the impossible is eliminated, whatever remains must be the truth. I see what others only look at.",
+    "inspiration": { "label": "Sherlock Holmes", "status": "public-domain" }
+  },
+  {
+    "id": "pack-anime-shonen-spirit",
+    "module": "anime",
+    "name": "The Shonen Spirit",
+    "description": "The classic never-give-up protagonist: every wall is a training arc, every rival makes you sharper, and you always know who you're fighting for.",
+    "traitIds": ["t-head-growth-mindset", "t-chest-burning-drive", "t-feet-shows-up", "t-chest-warmth", "t-hands-bold-action"],
+    "emotions": [
+      { "id": "e-enthusiasm", "intensity": 9 },
+      { "id": "e-courage", "intensity": 8 },
+      { "id": "e-joy", "intensity": 7 }
+    ],
+    "planTemplateId": "plan-actor",
+    "gesture": "Fist clenched and raised to chest height, wide grin — next level unlocked",
+    "identityScript": "Every wall is a training arc. I get knocked down, I level up, and I never fight without someone to protect."
+  },
+  {
+    "id": "pack-anime-silent-blade",
+    "module": "anime",
+    "name": "The Silent Blade",
+    "description": "Terse, precise, unshakeable: keeps the world clean and the choices cleaner. The fewer the words, the sharper the cut.",
+    "traitIds": ["t-hands-craft", "t-chest-steadiness", "t-head-calm-pressure", "t-head-single-focus", "t-mouth-says-no"],
+    "emotions": [
+      { "id": "e-determination", "intensity": 8 },
+      { "id": "e-clarity", "intensity": 7 },
+      { "id": "e-peace", "intensity": 5 }
+    ],
+    "planTemplateId": "plan-actor",
+    "gesture": "Wipe an invisible blade clean — slow, precise, order restored",
+    "identityScript": "I keep my world clean and my choices cleaner. The fewer words, the sharper the cut."
+  },
+  {
+    "id": "pack-anime-relentless-fighter",
+    "module": "anime",
+    "name": "The Relentless Fighter",
+    "description": "Strength built one impossible rep at a time. Seeks the stronger opponent on purpose — that's where the growth lives.",
+    "traitIds": ["t-hands-obsessive-reps", "t-chest-competitive-fire", "t-head-hard-mind", "t-feet-shows-up", "t-chest-courage"],
+    "emotions": [
+      { "id": "e-determination", "intensity": 9 },
+      { "id": "e-courage", "intensity": 8 },
+      { "id": "e-willingness", "intensity": 6 }
+    ],
+    "planTemplateId": "plan-actor",
+    "gesture": "Roll both shoulders back, slow neck turn side to side, set the stance",
+    "identityScript": "Strength is built one impossible rep at a time. I seek the stronger opponent because that's where I grow."
+  },
+  {
+    "id": "pack-anime-gentle-guardian",
+    "module": "anime",
+    "name": "The Gentle Guardian",
+    "description": "Kind AND unbreakable — they were never opposites. Protects what it loves with everything it trains.",
+    "traitIds": ["t-chest-warmth", "t-hands-generous", "t-feet-shows-up", "t-head-optimism", "t-chest-courage"],
+    "emotions": [
+      { "id": "e-compassion", "intensity": 8 },
+      { "id": "e-determination", "intensity": 8 },
+      { "id": "e-warmth", "intensity": 7 }
+    ],
+    "planTemplateId": "plan-actor",
+    "gesture": "Flat hand over the heart, one slow bow of the head — resolve, set kindly",
+    "identityScript": "I am kind and unbreakable — those were never opposites. I protect what I love with everything I train."
+  },
+  {
+    "id": "pack-mimic-eye",
+    "module": "mimicry",
+    "name": "The Mimic's Eye",
+    "description": "The observation foundation: learn to see posture, rhythm, and the telling detail before you ever try the voice. Your study subject is your choice.",
+    "traitIds": ["t-head-observer", "t-mouth-voice-chameleon", "t-chest-playfulness", "t-hands-craft", "t-chest-presence"],
+    "emotions": [
+      { "id": "e-playfulness", "intensity": 7 },
+      { "id": "e-clarity", "intensity": 7 },
+      { "id": "e-enthusiasm", "intensity": 6 }
+    ],
+    "planTemplateId": "plan-mimicry",
+    "gesture": "Tilt the head, soften the gaze, then quietly mirror the posture of whoever you're studying",
+    "identityScript": "I see what most people miss — the tilt, the rhythm, the pause. Every person I study makes my instrument richer."
+  },
+  {
+    "id": "pack-mimic-impressionist",
+    "module": "mimicry",
+    "name": "The Impressionist",
+    "description": "For performing, not just observing: face and voice as clay, courage to do it in front of people, and respect for every subject you become.",
+    "traitIds": ["t-mouth-voice-chameleon", "t-mouth-storyteller", "t-chest-courage", "t-mouth-showman", "t-head-observer"],
+    "emotions": [
+      { "id": "e-playfulness", "intensity": 8 },
+      { "id": "e-courage", "intensity": 7 },
+      { "id": "e-enthusiasm", "intensity": 7 }
+    ],
+    "planTemplateId": "plan-mimicry",
+    "gesture": "Clear the face to neutral, then let the new character arrive one feature at a time",
+    "identityScript": "My face and voice are clay. I don't mock — I celebrate people by becoming them for a minute."
   }
 ]

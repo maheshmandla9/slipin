@@ -26,6 +26,7 @@ const wirePersona = (p: Persona) => ({
   emotions: p.emotions,
   gesture: p.gesture,
   identityScript: p.identityScript,
+  inspiration: p.inspiration,
 });
 
 async function post(path: string, body: unknown): Promise<{ status: number; data: Record<string, unknown> } | null> {

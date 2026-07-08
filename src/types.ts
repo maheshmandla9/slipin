@@ -9,6 +9,10 @@ export type ModuleId =
   | 'animal'
   | 'physical'
   | 'manifestation'
+  | 'icons'
+  | 'screen'
+  | 'anime'
+  | 'mimicry'
   | 'freehand';
 
 export interface Trait {
@@ -80,6 +84,11 @@ export interface Pack {
   gesture: string;
   identityScript: string;
   animalMeta?: { animal: string; emoji: string };
+  /** Real-person packs only (ADR-001): the figure whose public qualities inspired
+   *  this pack. Fictional-archetype packs NEVER carry this — the bundle is public. */
+  inspiration?: { label: string; status: 'public-domain' | 'deceased' | 'living' };
+  /** Kill-flag (comply-fast SOP): false = pack hidden everywhere. Default true. */
+  active?: boolean;
 }
 
 export interface Persona {
@@ -91,6 +100,10 @@ export interface Persona {
   gesture: string;
   identityScript: string;
   createdAt: string; // ISO
+  /** Who inspires this persona — copied from the pack or typed by the user
+   *  (their content, their localStorage). Shown with an unofficial-persona
+   *  disclaimer and passed to chat for energy + anti-impersonation guardrails. */
+  inspiration?: string;
 }
 
 export interface PlanMission {

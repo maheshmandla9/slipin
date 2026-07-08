@@ -45,6 +45,26 @@ const COPY: Record<string, { headline: string; sub: string; bullets: string[] }>
     sub: 'The full curated trait and emotion library, zone by zone, on a living avatar. For people who know what they want.',
     bullets: ['40+ curated traits across beliefs, emotions, voice, action, habits', 'Hawkins-laddered emotional intensities', 'Your persona, your plan, your proof'],
   },
+  icons: {
+    headline: 'Whose mindset will you wear?',
+    sub: 'Train the qualities the greats are known for — the discipline, the fire, the focus. Not fan fiction: a daily practice built from their publicly documented mindsets.',
+    bullets: ['Mindset packs inspired by legends of sport, cinema, science, and myth', 'Chat with the mindset to feel it — then live it in daily missions', 'Don\'t see your icon? Request them with one tap'],
+  },
+  screen: {
+    headline: 'Step off the couch and into the character.',
+    sub: 'The archetypes you love from the movies — the genius inventor, the underdog champion, the unstoppable professional — turned into daily identity practice.',
+    bullets: ['Archetype packs with the exact traits that make those characters magnetic', 'Name your persona after whoever inspires you — it\'s yours', 'Built on real acting craft: the Magic If, psychological gesture, voice drills'],
+  },
+  anime: {
+    headline: 'Your training arc starts today.',
+    sub: 'Shonen spirit, silent precision, gentle strength — wear the energy of your favorite heroes in real life. Cosplay-ready confidence included.',
+    bullets: ['Hero archetypes with real behavioral science underneath', 'Perfect prep for cosplay and comic-con embodiment', 'Level up daily: missions, streaks, and visible proof of the arc'],
+  },
+  mimicry: {
+    headline: 'Learn to become anyone.',
+    sub: 'The craft of imitation, taught as a ladder: eye first, then body, then voice. Pick any study subject — your favorite performer, speaker, or friend.',
+    bullets: ['The observation ladder: posture → gesture → rhythm → voice', 'Record-and-compare drills that sharpen fast', 'Respectful by design — celebration, never mockery'],
+  },
 };
 
 export default function ModuleLanding() {

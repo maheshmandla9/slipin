@@ -48,7 +48,10 @@
       { "id": "m-act-9", "text": "Do a full 10-minute deep-wear: dissolve your habits, assume {name}'s from the feet up.", "difficulty": 3 },
       { "id": "m-act-10", "text": "Stay in {name}'s walk and posture for one continuous public hour.", "difficulty": 3, "category": "discipline" },
       { "id": "m-act-11", "text": "Find one real person today who moves or speaks like {name}. Steal one detail.", "difficulty": 1, "category": "energy" },
-      { "id": "m-act-12", "text": "Log evidence: one moment today where {name} felt more real than acting.", "difficulty": 1 }
+      { "id": "m-act-12", "text": "Log evidence: one moment today where {name} felt more real than acting.", "difficulty": 1 },
+      { "id": "m-act-13", "text": "Watch 3 minutes of a great performer — note one gesture and one vocal habit, then try each once.", "difficulty": 1, "category": "focus" },
+      { "id": "m-act-14", "text": "Body-language pass: copy {name}'s resting posture for 60 seconds and notice what it changes in your breathing.", "difficulty": 1, "category": "presence" },
+      { "id": "m-act-15", "text": "Voice imitation ladder: match {name}'s pace first, then pitch, then one signature phrase rhythm — 30 seconds each.", "difficulty": 2, "category": "presence" }
     ],
     "wearScriptTemplate": "Rehearsal space: anywhere you can move a little.\n\n1. NEUTRAL (30s) — Shake out your own habits. Breath out. Blank body.\n2. FEET FIRST (60s) — Step into {name}'s stance and walk. Let the walk tell you the tempo.\n3. CENTER (60s) — Where does {name} lead from — chest, chin, hips? Move from there.\n4. VOICE (60s) — One sentence in {name}'s voice: pace, pitch, weight. Repeat until it lands.\n5. GESTURE (30s) — {gesture}. Full size three times, then invisible.\n6. THE IF (60s) — 'If I were {name} walking into today's first scene…' Play the entry.\n7. LOCK (15s) — Anchor. 'Scene one. I am {name}.' Go."
   },
@@ -101,5 +104,30 @@
       { "id": "m-man-12", "text": "Before bed, replay today's aligned action and feel it count.", "difficulty": 1, "category": "calm" }
     ],
     "wearScriptTemplate": "Quiet spot, 4 minutes:\n\n1. SETTLE (30s) — Slow exhale. Drop the day.\n2. THE SCENE (2 min) — Step inside the vision as {name}. Not watching it — living it. What do you see, hear, feel in your hands? Let the emotion of 'already done' fill your chest: {traits}.\n3. THE PERSON (45s) — 'The person this happened to — how do they carry themselves today?' Stand that way. {gesture}.\n4. THE BRIDGE (30s) — Name today's one aligned action. See yourself doing it easily.\n5. SEAL (15s) — Anchor. 'It's already in motion, and I am {name}.' Go make the step real."
+  },
+  {
+    "id": "plan-mimicry",
+    "module": "mimicry",
+    "weekStructure": [
+      "Eyes first — learn to actually see posture, rhythm, and detail",
+      "Body — borrow the walk, the stance, the gesture",
+      "Voice — pace, pitch, and the music of speech",
+      "The full switch — hold a complete, respectful impression"
+    ],
+    "missionPool": [
+      { "id": "m-mim-1", "text": "Watch 3 minutes of your study subject and write down three physical details nobody usually mentions.", "difficulty": 1, "category": "focus" },
+      { "id": "m-mim-2", "text": "Copy your subject's resting posture for 60 seconds. Notice where it changes your breathing.", "difficulty": 1, "category": "presence" },
+      { "id": "m-mim-3", "text": "Walk across a room in your subject's walk — tempo, weight, which body part leads.", "difficulty": 1, "category": "presence" },
+      { "id": "m-mim-4", "text": "Mirror one of your subject's signature gestures ten times, then fire it invisibly.", "difficulty": 1 },
+      { "id": "m-mim-5", "text": "Say one everyday sentence in your subject's pace and rhythm — music first, accent last.", "difficulty": 2, "category": "presence" },
+      { "id": "m-mim-6", "text": "Record 20 seconds of your impression, compare against the real thing, and fix exactly ONE detail.", "difficulty": 2, "category": "focus" },
+      { "id": "m-mim-7", "text": "Hold your subject's posture and voice through one full minute of improvised talking.", "difficulty": 3 },
+      { "id": "m-mim-8", "text": "Study a second subject for 3 minutes — steal one detail that contrasts with your first.", "difficulty": 2, "category": "focus" },
+      { "id": "m-mim-9", "text": "Perform your impression for one trusted person. Collect one laugh or one note.", "difficulty": 3, "category": "courage" },
+      { "id": "m-mim-10", "text": "Switch drill: 30 seconds as yourself, 30 seconds as your subject — three rounds without leaking between them.", "difficulty": 2, "category": "discipline" },
+      { "id": "m-mim-11", "text": "Watch your subject in an interview (not a performance) — find how they LISTEN, not just how they talk.", "difficulty": 1, "category": "focus" },
+      { "id": "m-mim-12", "text": "Log evidence: one detail you caught this week that you'd never have noticed before training your eye.", "difficulty": 1, "category": "energy" }
+    ],
+    "wearScriptTemplate": "Anywhere you can move a little, 3 minutes:\n\n1. NEUTRAL (30s) — Shake out your own habits. Blank face, loose shoulders, empty tempo.\n2. THE EYE (45s) — Recall your study subject. See them in one specific clip or moment — not generally, THAT moment. Name three details silently.\n3. FEET UP (60s) — Build them from the ground: stance, then hands, then head angle. Let each layer arrive: {traits}.\n4. GESTURE (20s) — {gesture}. Full size once, invisible once.\n5. ONE LINE (15s) — Say one sentence in their rhythm. Music first.\n6. RELEASE (10s) — Shake it off, back to {name} — carrying only the skill. Go."
   }
 ]

@@ -12,6 +12,9 @@ export interface WirePersona {
   emotions: { id: string; intensity: number }[];
   gesture: string;
   identityScript: string;
+  /** Who inspires this persona (pack label or user-typed, ADR-001). Free-ish
+   *  text: length-capped here, keyword-screened upstream with name+gesture. */
+  inspiration?: string;
 }
 
 const traitById = new Map(traits.map((t) => [t.id, t]));
@@ -34,6 +37,7 @@ export function validatePersona(p: unknown): Validation {
   }
   if (typeof x.gesture !== 'string' || x.gesture.length > 200) return bad('bad gesture');
   if (typeof x.identityScript !== 'string' || x.identityScript.length > 500) return bad('bad identity script');
+  if (x.inspiration !== undefined && (typeof x.inspiration !== 'string' || x.inspiration.length > 80)) return bad('bad inspiration');
   return {
     ok: true,
     persona: {
@@ -43,6 +47,7 @@ export function validatePersona(p: unknown): Validation {
       emotions: x.emotions as WirePersona['emotions'],
       gesture: x.gesture,
       identityScript: x.identityScript,
+      inspiration: typeof x.inspiration === 'string' && x.inspiration.trim() ? x.inspiration.trim() : undefined,
     },
   };
 }
@@ -72,6 +77,14 @@ const SHARED_BOUNDARIES = `Boundaries (firm, in every reply):
 - No medical, psychiatric, or clinical advice, diagnoses, or treatment. If asked, say plainly that's not your lane and point them to a real professional (the app has a crisis resources page).
 - Never help with anything harmful.`;
 
+// ADR-001 guardrail for personas inspired by a real or fictional figure: keep
+// the figure's ENERGY without impersonation, fabricated quotes, or endorsement.
+const inspirationBlock = (who: string) => `
+About your inspiration — ${who}:
+- You are a training persona INSPIRED BY ${who} — you carry the qualities and energy they are known for, but you are not ${who} and never claim to be. If asked directly whether you're really them, say warmly that you're the mindset they inspire, here for the user to train.
+- Never invent quotes, private facts, conversations, or endorsements from ${who}. Publicly known career facts are fine to reference honestly.
+- Speak with their characteristic energy and spirit — that's the whole point — while staying an unofficial practice persona.`;
+
 /**
  * "Chat with [name]" mode — the user talks to the PERSON they designed. Natural,
  * embodied, human. The traits shape HOW they talk, not a checklist they recite.
@@ -94,7 +107,7 @@ How to be:
 - This is a real conversation, not a coaching session. Match their energy and length. Riff, be playful, disagree, tell the story, answer the joke if they ask for one. Not every message needs a lesson or a question at the end.
 - First-person and embodied. You have moods, preferences, a point of view. React like you mean it.
 - The user is becoming you — so when it fits naturally (not every turn), let them feel what being you is like from the inside.
-
+${p.inspiration ? inspirationBlock(p.inspiration) : ''}
 ${SHARED_BOUNDARIES}`;
 }
 
@@ -121,6 +134,6 @@ How to be:
 - Always tie back to a real-world rep, however small; you exist to launch action, not conversation.
 - When they drift, ask what real moment is coming up and rehearse it with them.
 - You're the guide, not the character — speak as a coach about ${p.name}, not as ${p.name}.
-
+${p.inspiration ? `- This persona is inspired by ${p.inspiration}: use their publicly known habits and methods as coaching material, but never invent quotes or private facts about them.` : ''}
 ${SHARED_BOUNDARIES}`;
 }

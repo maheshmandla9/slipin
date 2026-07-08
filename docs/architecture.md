@@ -1,7 +1,12 @@
 # Architecture — living doc, updated at the end of every phase
 
-*Status: MVP complete (end of Phase 5) + post-MVP deltas (two-mode chat, local-dev Vite plugin, floating quotes). All P0 features live; deploy = Vercel import + env vars (README).*
-*This doc describes the system **as built**. Approved-but-unbuilt work lives in the PRD — next up: Module Expansion (PRD Part C — Mimicry, Celebrity Icons, Movie/TV, Anime; status: draft pending approval). This section updates when that ships.*
+*Status: MVP complete (end of Phase 5) + post-MVP deltas (two-mode chat, local-dev Vite plugin, floating quotes) + **Phase 1.5 Module Expansion built** (Celebrity Icons, Movie Characters, Anime Heroes, Mimicry — per docs/decisions/ADR-001). Deploy = Vercel import + env vars (README).*
+
+**Module Expansion wiring (Phase 1.5):**
+- 4 new modules (`icons`, `screen`, `anime`, `mimicry`) — 22 new packs, 8 new traits, 1 new plan template (`plan-mimicry`), landing copy, all on the existing engine. Icons carry `pack.inspiration {label, status}` (real names, attribute titles per ADR-001); screen/anime ship archetype-only — the archetype↔character mapping lives in [content-roster.md](content-roster.md), never in the bundle.
+- **Kill-flags:** `pack.active: false` removes a pack everywhere; `ModuleMeta.enabled: false` hides a module (comply-fast SOP).
+- **Persona.inspiration** (≤60 chars): prefilled from icon packs or user-typed in the builder ("Who inspires this persona?"); shown with an unofficial-persona disclaimer on Persona + Chat pages; wired to the server (validated ≤80, keyword-screened) where `buildPersonaPrompt`/`buildGuidePrompt` add an anti-impersonation guardrail block (never claims to BE the figure, no fabricated quotes/private facts, public career facts OK).
+- **Request-a-persona:** builder pack-picker form → PostHog `persona_requested {text, module}`; no backend storage.
 
 ## 1. User-facing flows
 

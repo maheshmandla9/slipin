@@ -103,6 +103,11 @@ export default function Chat() {
           {subtitle}
           {remaining !== null ? ` · ${remaining} messages left today` : ''}
         </p>
+        {persona.inspiration && isPersona && (
+          <p className="mt-0.5 text-[11px] text-ink/40">
+            Unofficial practice persona inspired by {persona.inspiration} — not affiliated with or endorsed by them.
+          </p>
+        )}
       </div>
 
       <div className="mt-3 flex-1 space-y-3 overflow-y-auto rounded-xl border border-ink/10 bg-white p-4">

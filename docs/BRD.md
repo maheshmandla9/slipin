@@ -140,6 +140,8 @@ The expansion modules trade on recognizable figures, which imports two distinct 
 
 **Additional flags:** religious sentiment (Mahabharata figures → respectful, non-worship framing) · political sensitivity in India (Shivaji, Bhagat Singh) · **formal legal review required before monetization** (commercial use materially strengthens publicity claims).
 
+**DECISION (08 Jul 2026, ACCEPTED — full analysis in docs/decisions/ADR-001):** real people keep real names via attribute-titles ("[X] Mindset", "[X]'s Energy", "The [X] Blueprint") + no-likeness policy + disclaimers + anti-defamation chat guardrails; fictional characters ship archetype-only with a user-filled "inspired by" field (protected names never in the public bundle); per-pack/per-module kill-flags + comply-fast takedown SOP (one letter costs one pack, never the product).
+
 ## 5. Effectiveness & Real-World Results Strategy
 - **Activation ≤3 min:** pick module → pick pack → avatar dressed → first wear-session. No signup wall.
 - **Tiny-first:** day-1 mission ≤60 sec; difficulty ratchets from debrief scores.

@@ -16,6 +16,10 @@ const moduleId = z.enum([
   'animal',
   'physical',
   'manifestation',
+  'icons',
+  'screen',
+  'anime',
+  'mimicry',
   'freehand',
 ]);
 
@@ -72,6 +76,13 @@ const packSchema = z.object({
   gesture: z.string(),
   identityScript: z.string(),
   animalMeta: z.object({ animal: z.string(), emoji: z.string() }).optional(),
+  // Real-person packs only (ADR-001): who inspired the pack. Fictional-archetype
+  // packs never carry this — everything here ships in the public JS bundle.
+  inspiration: z
+    .object({ label: z.string().max(60), status: z.enum(['public-domain', 'deceased', 'living']) })
+    .optional(),
+  // Kill-flag: set false + redeploy = pack removed everywhere (comply-fast SOP).
+  active: z.boolean().optional(),
 });
 
 const quoteSchema = z.object({
@@ -86,7 +97,9 @@ export const TRAITS: Trait[] = z.array(traitSchema).parse(traitsJson);
 export const EMOTIONS: EmotionalQuality[] = z.array(emotionSchema).parse(emotionsJson);
 export const TECHNIQUES: Technique[] = z.array(techniqueSchema).parse(techniquesJson);
 export const PLAN_TEMPLATES: PlanTemplate[] = z.array(planTemplateSchema).parse(planTemplatesJson);
-export const PACKS: Pack[] = z.array(packSchema).parse(packsJson);
+// Inactive packs are filtered at load — the `active: false` kill-flag removes a
+// pack from every surface (picker, landings, gestures) with a one-line JSON edit.
+export const PACKS: Pack[] = z.array(packSchema).parse(packsJson).filter((p) => p.active !== false);
 export const QUOTES: Quote[] = z.array(quoteSchema).parse(quotesJson);
 
 // Referential integrity — fail loudly at startup in dev if content is inconsistent.
@@ -114,18 +127,27 @@ export interface ModuleMeta {
   name: string;
   tagline: string;
   emoji: string;
+  /** Kill-flag: false hides the module from Home, landings, and the builder. Default true. */
+  enabled?: boolean;
 }
 
-export const MODULES: ModuleMeta[] = [
+const ALL_MODULES: ModuleMeta[] = [
   { id: 'actor', name: 'Actor Prep', tagline: 'Build a character you can wear on stage and in the room.', emoji: '🎭' },
   { id: 'self-transform', name: 'Self-Transformation', tagline: 'Design the next version of you and practice being them daily.', emoji: '🦋' },
-    { id: 'manifestation', name: 'Manifestation', tagline: 'Vivid vision, felt gratitude, one aligned step per day.', emoji: '🧘🪄' },
+  { id: 'icons', name: 'Celebrity Icons', tagline: 'Wear the mindset of the greats — sport, cinema, science, legend.', emoji: '🌟' },
+  { id: 'manifestation', name: 'Manifestation', tagline: 'Vivid vision, felt gratitude, one aligned step per day.', emoji: '🧘🪄' },
   { id: 'student', name: 'Student', tagline: 'Confidence, focus, and a voice that shows up in class.', emoji: '🎓' },
+  { id: 'screen', name: 'Movie Characters', tagline: 'Step into the archetypes you love from the screen.', emoji: '🎬' },
+  { id: 'anime', name: 'Anime Heroes', tagline: 'Train like your favorite arc — cosplay-ready confidence.', emoji: '⚡' },
   { id: 'animal', name: 'Animal Personas', tagline: 'Borrow the lion’s courage. Seriously — it works.', emoji: '🦁' },
+  { id: 'mimicry', name: 'Mimicry', tagline: 'The craft of becoming anyone — eye, body, then voice.', emoji: '🪞' },
   { id: 'physical', name: 'Physical Prep', tagline: 'Become the athlete in your head before the gym.', emoji: '💪' },
   { id: 'emotional', name: 'Emotional Management', tagline: 'Stay steady in hot moments — respond, don’t react.', emoji: '❤️‍🔥🕊️' },
   { id: 'freehand', name: 'Free-Hand', tagline: 'Build from the full library, zone by zone.', emoji: '🎨' },
 ];
+
+// Disabled modules disappear from Home, landings, and the builder (kill-flag).
+export const MODULES: ModuleMeta[] = ALL_MODULES.filter((m) => m.enabled !== false);
 
 export const moduleMeta = (m: ModuleId) => MODULES.find((x) => x.id === m)!;
 

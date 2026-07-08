@@ -28,6 +28,7 @@ export type AppEvent =
   | 'report_viewed'
   | 'card_shared'
   | 'moderation_blocked'
+  | 'persona_requested'
   | 'llm_error';
 
 export function track(event: AppEvent, properties: Record<string, string | number | boolean> = {}): void {

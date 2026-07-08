@@ -48,8 +48,8 @@ export default async function handler(req: Request): Promise<Response> {
     const cap = await checkChatCap(req, persona.id);
     if (!cap.ok) return fail(cap.status!, cap.code!, cap.message!);
 
-    // Moderation IN: keyword screen (name/gesture too — free-ish text) + model screen
-    const inputScreen = keywordScreen(`${persona.name} ${persona.gesture} ${last.content}`);
+    // Moderation IN: keyword screen (name/gesture/inspiration too — free-ish text) + model screen
+    const inputScreen = keywordScreen(`${persona.name} ${persona.gesture} ${persona.inspiration ?? ''} ${last.content}`);
     const modIn = inputScreen.allowed ? await modelScreen(last.content) : inputScreen;
     if (!modIn.allowed) {
       return json({ blocked: true, category: modIn.category, reply: REDIRECT_REPLY[modIn.category], remaining: cap.remaining });

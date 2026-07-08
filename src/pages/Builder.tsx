@@ -19,6 +19,10 @@ const GESTURES = [
 
 const MAX_EMOTIONS = 4;
 
+// Modules where personas are typically inspired by a real or fictional figure —
+// these get the optional "inspired by" field and the request-a-persona form (ADR-001).
+const INSPIRATION_MODULES: ModuleId[] = ['icons', 'screen', 'anime', 'mimicry'];
+
 export default function Builder() {
   const { moduleId } = useParams();
   const navigate = useNavigate();
@@ -34,6 +38,9 @@ export default function Builder() {
   const [name, setName] = useState('');
   const [gesture, setGesture] = useState(GESTURES[0]);
   const [zone, setZone] = useState<Zone>('head');
+  const [inspiration, setInspiration] = useState('');
+  const [requestText, setRequestText] = useState('');
+  const [requestSent, setRequestSent] = useState(false);
 
   const zoneCounts = useMemo(() => {
     const counts: Partial<Record<Zone, number>> = {};
@@ -58,6 +65,7 @@ export default function Builder() {
     setTraitIds(p.traitIds);
     setEmotions(p.emotions);
     setGesture(p.gesture);
+    if (p.inspiration) setInspiration(p.inspiration.label);
     setPicked(true);
   };
 
@@ -96,10 +104,19 @@ export default function Builder() {
       gesture,
       identityScript,
       createdAt: new Date().toISOString(),
+      inspiration: inspiration.trim().slice(0, 60) || undefined,
     };
     addPersona(persona);
     track('persona_created', { module, traits: traitIds.length, fromPack: !!pack });
     navigate('/persona');
+  };
+
+  const sendRequest = () => {
+    const text = requestText.trim();
+    if (!text) return;
+    track('persona_requested', { text: text.slice(0, 80), module });
+    setRequestSent(true);
+    setRequestText('');
   };
 
   // ---- Step 1: pick a pack (skipped for free-hand / modules without packs) ----
@@ -130,6 +147,35 @@ export default function Builder() {
             <p className="mt-1 text-sm">Start empty and pick every trait yourself.</p>
           </button>
         </div>
+
+        {INSPIRATION_MODULES.includes(module) && (
+          <div className="mt-8 rounded-xl border border-ink/10 bg-accent-soft/40 p-4">
+            <p className="text-sm font-semibold">Don't see who you're looking for?</p>
+            {requestSent ? (
+              <p className="mt-1 text-sm text-ink/60">Got it — thanks! Requests guide what we add next.</p>
+            ) : (
+              <form
+                className="mt-2 flex gap-2"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  sendRequest();
+                }}
+              >
+                <input
+                  value={requestText}
+                  onChange={(e) => setRequestText(e.target.value)}
+                  maxLength={80}
+                  placeholder="Request a persona — who inspires you?"
+                  className="flex-1 rounded-lg border border-ink/20 px-3 py-2 text-sm focus:border-accent focus:outline-none"
+                  aria-label="Request a persona"
+                />
+                <button type="submit" disabled={!requestText.trim()} className="rounded-lg border border-accent px-4 py-2 text-sm font-semibold text-accent enabled:hover:bg-accent-soft disabled:opacity-40">
+                  Request
+                </button>
+              </form>
+            )}
+          </div>
+        )}
       </main>
     );
   }
@@ -242,6 +288,18 @@ export default function Builder() {
               className="mt-1 w-full rounded-lg border border-ink/20 px-3 py-2 focus:border-accent focus:outline-none"
             />
           </label>
+          {INSPIRATION_MODULES.includes(module) && (
+            <label className="flex-1 text-sm">
+              <span className="font-medium">Inspired by <span className="font-normal text-ink/50">(optional)</span></span>
+              <input
+                value={inspiration}
+                onChange={(e) => setInspiration(e.target.value)}
+                maxLength={60}
+                placeholder="Who inspires this persona for you?"
+                className="mt-1 w-full rounded-lg border border-ink/20 px-3 py-2 focus:border-accent focus:outline-none"
+              />
+            </label>
+          )}
           <label className="flex-1 text-sm">
             <span className="font-medium">Signature gesture</span>
             <select

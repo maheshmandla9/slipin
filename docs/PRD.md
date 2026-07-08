@@ -7,7 +7,8 @@
 |---|---|---|---|
 | 1.0 | 2026-07-08 | Initial detailed PRD; Parts A (MVP) + B (roadmap) | Part A **SHIPPED** same day (Phases 0–5 complete) |
 | 1.1 | 2026-07-08 | As-built deltas recorded: chat split into two modes — talk to the persona as a real person + "Your Personal Guide" coach (§8 updated) · local dev runs /api fns inside `npm run dev` via Vite plugin (no Vercel CLI) · floating-quotes content type added | Shipped |
-| 1.2 | 2026-07-08 | **Part C added — Module Expansion**: Mimicry, Celebrity Icons/Legends, Movie/TV Characters, Anime Characters, Actor voice/body-language guidance, "request a persona" button. IP/publicity-rights tier strategy per BRD v4 §4.6 | **DRAFT — naming-strategy decision + build approval pending** |
+| 1.2 | 2026-07-08 | **Part C added — Module Expansion**: Mimicry, Celebrity Icons/Legends, Movie/TV Characters, Anime Characters, Actor voice/body-language guidance, "request a persona" button. IP/publicity-rights tier strategy per BRD v4 §4.6 | Superseded by 1.3 |
+| 1.3 | 2026-07-08 | **Naming strategy DECIDED** (docs/decisions/ADR-001): real people = attribute-title family with real names ("[X] Mindset" / "[X]'s Energy" / "The [X] Blueprint") + disclaimers + no likeness; fictional = archetype-shipped + user "inspired by" field (protected names never in the public bundle); per-pack `active` + per-module `enabled` kill-flags; comply-fast SOP. Build approved | **APPROVED — building** |
 
 ═══════════════════════════════════
 # PART A — PRD_MVP (the 4–5 week build)
@@ -177,24 +178,26 @@ Persistence: single JSON blob in localStorage; export/import = download/upload t
 | E5 | **Anime Characters** (doubles as cosplay/comic-con prep) | New module | T3 |
 | E6 | "Request a persona" button on E2–E5 pages | Micro-feature | None |
 
-## C2. Design rules (bind all four new modules)
-1. **Naming per rights tier** (BRD §4.6): T0 real names · T1 "inspired by X" · T2 archetype titles + nominative "inspired by" descriptions · T3 archetype-only in shipped content (persona *name* field stays user-editable free text — users may rename locally; user content ≠ published content).
+## C2. Design rules (bind all four new modules) — *v1.3, per ADR-001 (ACCEPTED)*
+1. **Naming**: real people keep real names via the **attribute-title family** — "[X] Mindset" · "[X]'s Energy" · "The [X] Blueprint" · "[X]'s Spirit" (never a pack titled as the bare person; never "Twin"/duplicate framing). T0 public-domain/historical/mythological figures have no restrictions. Fictional characters ship **archetype-only** (nothing protected in the public JS bundle — src/content is NOT private); the user personalizes via the **"inspired by" field** at creation ("Tony Stark" lives in their localStorage, shown in their UI, passed to chat as user content). Sherlock Holmes = public-domain exception, real name allowed. Archetype↔inspiration mapping for humans lives in docs/content-roster.md (repo docs never ship in the bundle).
 2. **Framing:** every pack sells the *qualities* ("train the discipline Ronaldo is known for"), never impersonation-as-entertainment.
 3. **Chat guardrail (T1/T2 real people):** prompt addition — never fabricate quotes, private facts, or endorsements of the real person; you are an unofficial training persona. UI shows a one-line "Unofficial practice persona — no affiliation or endorsement" disclaimer.
 4. **Exclusions & flags:** Gandhi excluded (Emblems & Names Act) · Mahabharata figures = respectful non-worship framing · politically charged figures (Shivaji, Bhagat Singh) require extra copy review · no images, no voice, no logos, no catchphrases of protected figures anywhere.
 5. **No AI voice cloning** — guidance is text; audio imitation is out of scope (ELVIS-Act class laws + Phase-2 cost).
 
-## C3. Data model & API delta (small)
+## C3. Data model & API delta (small) — *v1.3*
 ```ts
 ModuleId += 'mimicry' | 'icons' | 'screen' | 'anime'
 Pack += inspiration?: {
-  label: string                       // "Inspired by Cristiano Ronaldo"
-  figure: string                      // canonical name — internal (moderation, request matching)
-  rightsTier: 'T0'|'T1'|'T2'|'T3'
-  status: 'public-domain'|'deceased'|'living'|'fictional'
+  label: string                       // "Inspired by Cristiano Ronaldo" — REAL-PEOPLE packs only;
+                                      // fictional packs NEVER carry this (bundle is public)
+  status: 'public-domain'|'deceased'|'living'
 }
-Persona += inspiration?               // copied from pack at creation; sent on wire;
-                                      // server re-validates (length caps + keyword screen)
+Pack += active?: boolean              // default true; false = pack hidden everywhere (kill-flag,
+                                      // comply-fast SOP: flip + redeploy same day)
+ModuleMeta += enabled?: boolean       // default true; false = module hidden from Home + landings
+Persona += inspiration?: string       // pack label copied at creation OR user-typed free text
+                                      // (≤80 chars); sent on wire; server re-validates + keyword-screens
 ```
 - `buildPersonaPrompt`/`buildGuidePrompt` append the C2-rule-3 guardrail block when `inspiration.status` is `living` or `deceased`.
 - `/api/chat` + `/api/plan`: no endpoint changes; existing caps/moderation/budget apply as-is.
@@ -216,7 +219,8 @@ Persona += inspiration?               // copied from pack at creation; sent on w
 Per-module: landing→persona-created conversion · first wear-session rate · `persona_requested` volume ranked (demand signal for roster expansion) · icons share-card rate (viral loop).
 
 ## C7. Open questions (Part C)
-1. **Naming strategy (T2/T3) — OWNER DECISION PENDING** (options + recommendation presented 08 Jul 2026).
+1. ~~Naming strategy~~ — **DECIDED 08 Jul 2026, see docs/decisions/ADR-001** (attribute-title family for real people; archetype + inspired-by field for fictional).
 2. Final seed roster → validate against current trending-interest data at implementation time.
-3. **Formal legal review before monetization** — commercial use strengthens publicity-rights claims; revisit tiers before Pro tier launches.
-4. `screen` vs two separate module IDs for Indian vs international cinema — decide at implementation (single module with tags preferred).
+3. **Formal legal review before monetization** — commercial use strengthens publicity-rights claims; revisit ADR-001 before Pro tier launches.
+4. `screen` = single module for all cinema/TV (Indian + international), differentiated by pack copy. Decided at implementation.
+5. Dropped/deferred names (owner informed 08 Jul 2026): Gandhi (statute) · Shivaji, Bhagat Singh (deferred, political sensitivity) · Brando reclassified to Icons T1.

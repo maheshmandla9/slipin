@@ -31,6 +31,11 @@ export default function PersonaPage() {
         <div>
           <h1 className="text-2xl font-bold">{persona.name}</h1>
           <p className="text-sm text-ink/60">{meta.emoji} {meta.name} persona</p>
+          {persona.inspiration && (
+            <p className="mt-0.5 text-xs text-ink/45">
+              ✨ Inspired by {persona.inspiration} — unofficial practice persona, no affiliation or endorsement
+            </p>
+          )}
         </div>
         <div className="flex gap-2">
           {personas.length > 1 && (

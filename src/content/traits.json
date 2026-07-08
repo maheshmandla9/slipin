@@ -388,5 +388,85 @@
     "reframeScript": "Old thought: 'I work best under last-minute pressure.' New frame: 'Rushed me is a worse me. The early minutes are where composure is manufactured.'",
     "ifThenTemplate": { "trigger": "I plan any commitment", "response": "I set departure 10 minutes earlier than feels necessary" },
     "hawkinsLevel": 250
+  },
+  {
+    "id": "t-hands-obsessive-reps",
+    "name": "Ten Thousand Reps",
+    "zone": "hands",
+    "category": "discipline",
+    "description": "Trusts repetition over talent; one more rep is always available.",
+    "reframeScript": "Old thought: 'Some people are just naturals.' New frame: 'Naturals are people whose reps I didn't see. Mastery is volume with attention.'",
+    "ifThenTemplate": { "trigger": "I finish a practice session", "response": "I do one more focused rep before I stop — my signature on the session" },
+    "hawkinsLevel": 310
+  },
+  {
+    "id": "t-head-hard-mind",
+    "name": "Unbreakable Mind",
+    "zone": "head",
+    "category": "discipline",
+    "description": "Discomfort is training data; quitting is a decision you don't make.",
+    "reframeScript": "Old thought: 'This is too hard, I need it to stop.' New frame: 'Hard is the tuition. I can be uncomfortable and keep moving — that's the whole skill.'",
+    "ifThenTemplate": { "trigger": "I want to quit mid-effort", "response": "I finish the current unit (rep, page, minute) before any decision is allowed" },
+    "hawkinsLevel": 250
+  },
+  {
+    "id": "t-chest-competitive-fire",
+    "name": "Competitive Fire",
+    "zone": "chest",
+    "category": "energy",
+    "description": "The contest switches you on; pressure is your home ground.",
+    "reframeScript": "Old thought: 'I hope it doesn't come down to me.' New frame: 'Let it come down to me. I've rehearsed this moment more than anyone in the room.'",
+    "ifThenTemplate": { "trigger": "the stakes suddenly rise", "response": "I say 'good' under my breath and take the front-foot option" },
+    "hawkinsLevel": 310
+  },
+  {
+    "id": "t-chest-burning-drive",
+    "name": "Burning Drive",
+    "zone": "chest",
+    "category": "energy",
+    "description": "A reason bigger than comfort; the fire relights every morning.",
+    "reframeScript": "Old thought: 'I've lost my motivation.' New frame: 'Motivation isn't lost, it's unlit. I touch the reason — who and what I'm doing this for — and strike the match.'",
+    "ifThenTemplate": { "trigger": "my energy dips during the day", "response": "I say my reason out loud in one sentence and take the next step at once" },
+    "hawkinsLevel": 310
+  },
+  {
+    "id": "t-head-observer",
+    "name": "Sharp Observer",
+    "zone": "head",
+    "category": "focus",
+    "description": "Sees what others only look at — posture, rhythm, the telling detail.",
+    "reframeScript": "Old thought: 'I don't notice things like others do.' New frame: 'Observation is a muscle, not a gift. Three details per person, every time — it compounds.'",
+    "ifThenTemplate": { "trigger": "I meet or watch someone interesting", "response": "I silently name three physical details nobody else would mention" },
+    "hawkinsLevel": 350
+  },
+  {
+    "id": "t-mouth-voice-chameleon",
+    "name": "Voice Chameleon",
+    "zone": "mouth",
+    "category": "presence",
+    "description": "Hears the music of speech — pace, pitch, pause — and can play it back.",
+    "reframeScript": "Old thought: 'My voice is fixed, it is what it is.' New frame: 'My voice is an instrument with more range than I've used. Every voice I study adds a string.'",
+    "ifThenTemplate": { "trigger": "I hear a distinctive way of speaking", "response": "I privately replay one sentence of it — rhythm first, words second" },
+    "hawkinsLevel": 310
+  },
+  {
+    "id": "t-head-first-principles",
+    "name": "First-Principles Thinker",
+    "zone": "head",
+    "category": "focus",
+    "description": "Strips problems to physics and rebuilds; 'how it's done' is not an argument.",
+    "reframeScript": "Old thought: 'That's just how it's done.' New frame: 'Convention is a compressed guess. What do I actually know is true here? Build up from that.'",
+    "ifThenTemplate": { "trigger": "I'm told something is impossible or fixed", "response": "I ask 'what would have to be true for the opposite?' and list two things" },
+    "hawkinsLevel": 400
+  },
+  {
+    "id": "t-mouth-showman",
+    "name": "Magnetic Showman",
+    "zone": "mouth",
+    "category": "presence",
+    "description": "Gives the moment more energy than it asks for; rooms remember you.",
+    "reframeScript": "Old thought: 'Toning myself down keeps me safe.' New frame: 'The world has enough beige. My energy is a gift I've been rationing — spend it.'",
+    "ifThenTemplate": { "trigger": "I enter a room or start speaking", "response": "I give the first ten seconds 20% more energy than feels natural" },
+    "hawkinsLevel": 310
   }
 ]

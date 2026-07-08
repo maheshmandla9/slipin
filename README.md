@@ -27,15 +27,19 @@ All optional — every integration no-ops gracefully when its key is absent. LLM
 | `VITE_SENTRY_DSN` | frontend | Error reporting (browser) |
 | `VITE_POSTHOG_KEY` | frontend | Product analytics |
 
-## Deploy
+## Deploy (Vercel)
 
-Vercel: import the repo, set env vars above, deploy. The SPA is static; `/api/chat` and `/api/plan` deploy as Edge Functions automatically. *(Edge functions arrive in Phase 3.)*
+1. Push the repo to GitHub and **Import Project** in Vercel (framework auto-detects Vite; `vercel.json` handles SPA rewrites, `/api/*.ts` deploy as Edge Functions automatically).
+2. Set env vars (Project → Settings → Environment Variables): `ANTHROPIC_API_KEY` at minimum; add Upstash vars for real cross-region caps ([upstash.com](https://upstash.com) free tier → create a Redis DB → copy REST URL + token).
+3. Deploy. Smoke-test: create a persona → chat once → toggle `CHAT_ENABLED=false` and confirm the graceful notice.
 
-## Build status
+Ops levers in production: `CHAT_ENABLED` / `POLISH_ENABLED` kill-switches, `DAILY_BUDGET_USD` hard-stop (default $5/day), per-IP caps enforced in the functions. Errors land in Sentry (`fn:chat` / `fn:plan` tags); funnel lands in PostHog.
+
+## Build status — MVP complete
 
 - [x] Phase 0 — repo + docs
 - [x] Phase 1 — scaffold, avatar (5 zones), trait/emotion library, packs, free-hand builder, localStorage persistence
 - [x] Phase 2 — deterministic plan engine (focus-trait rotation, difficulty ramp, if-thens, wear scripts) + daily loop (intent → wear → missions → debrief) + streaks
 - [x] Phase 3 — `/api/chat` + `/api/plan` edge functions: persona system prompt, moderation in+out (keyword + Haiku classifier), per-IP rate cap, 20 msgs/day/persona, 3 polishes/day, daily $ budget hard-stop, kill-switches, Sentry; frontend degrades gracefully when any of it is off
 - [x] Phase 4 — evidence log + streak dots, 30-day then-vs-now report, PNG persona card export, JSON export/import, corrupt-storage recovery banner, PostHog events (no-SDK REST), Sentry FE (envelope API)
-- [ ] Phase 5 — QA + launch
+- [x] Phase 5 — QA (offline, LLM-down fallback, keyboard/ARIA/reduced-motion, mobile), per-module landing pages (`/m/<module>`), Vercel deploy config

@@ -11,6 +11,7 @@ import Chat from './pages/Chat';
 import Evidence from './pages/Evidence';
 import Report from './pages/Report';
 import Crisis from './pages/Crisis';
+import ModuleLanding from './pages/ModuleLanding';
 
 function RecoveryBanner() {
   const [visible, setVisible] = useState(!!corruptBackup);
@@ -62,6 +63,7 @@ export default function App() {
         <Route path="/evidence" element={<Evidence />} />
         <Route path="/report" element={<Report />} />
         <Route path="/crisis" element={<Crisis />} />
+        <Route path="/m/:moduleId" element={<ModuleLanding />} />
       </Routes>
 
       <DisclaimerFooter />

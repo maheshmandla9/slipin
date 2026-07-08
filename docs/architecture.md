@@ -1,6 +1,6 @@
 # Architecture — living doc, updated at the end of every phase
 
-*Status: end of Phase 4. Sections marked 🔜 land in later phases.*
+*Status: MVP complete (end of Phase 5). All P0 features live; deploy = Vercel import + env vars (README).*
 
 ## 1. User-facing flows
 
@@ -19,7 +19,11 @@
 - One focus trait per week (Franklin rotation), mission difficulty ramps: wk1 easy → wk4 hard.
 - Streak = consecutive days with a debrief; a yesterday-ending streak survives until today is fully missed (`src/engine/streaks.ts`).
 
-🔜 Phase 3: persona chat + plan polish. 🔜 Phase 4: evidence log UI, 30-day report, share card.
+**Persona chat** (`/chat`): session-only rehearsal-mirror conversation, 20 msgs/day/persona, moderation both directions — blocked topics get an in-character redirect (harm → crisis page pointer).
+
+**Evidence & report**: debrief wins auto-log as evidence; `/evidence` adds manual evidence-hunt entries + 14-day activity dots; `/report` shows then-vs-now scores, trend bars, proof highlights, PNG share card, and JSON export/import.
+
+**Acquisition landings**: `/m/actor`, `/m/student`, `/m/self-transform`, `/m/emotional`, `/m/animal`, `/m/physical`, `/m/manifestation`, `/m/freehand` — per-niche copy, one CTA into the builder.
 
 ## 2. Component wiring
 
@@ -116,29 +120,31 @@ Client (`src/lib/api.ts`): all LLM calls go through these two endpoints only. No
 ```mermaid
 flowchart TB
   subgraph Browser["Browser SPA — React + Vite + TS + Tailwind"]
-    UI["Pages: Home · Builder · Persona<br/>(🔜 Today · Chat · Evidence · Report)"]
-    AV["SVG Avatar<br/>5 ARIA zones + framer-motion"]
+    UI["Pages: Home · /m/:module landings · Builder ·<br/>Persona · Today · Chat · Evidence · Report · Crisis"]
+    AV["SVG Avatar<br/>5 ARIA zones + framer-motion<br/>(keyboard + reduced-motion)"]
     CONTENT["Static content JSON<br/>traits · emotions · techniques · packs · templates<br/>(zod-validated, bundled)"]
-    STORE["Zustand store + persist"]
-    LS[("localStorage<br/>slipin-app-state-v1<br/>{personas, plans, logs, evidence, streak}")]
+    ENGINE["planEngine (deterministic)<br/>streaks · report math"]
+    STORE["Zustand store + persist<br/>(pre-hydration corrupt check)"]
+    LS[("localStorage<br/>slipin-app-state-v1<br/>{personas, plans, logs, evidence, streak}<br/>export/import = JSON download/upload")]
     UI --> AV
     UI --> CONTENT
+    UI --> ENGINE
     UI <--> STORE
     STORE <--> LS
   end
 
-  subgraph Vercel["Vercel Edge Functions 🔜 Phase 3"]
-    CHAT["/api/chat<br/>sys-prompt builder · moderation in/out"]
-    PLAN["/api/plan<br/>polish only, strict JSON"]
-    GUARD["caps · daily $ counter · kill-switches"]
+  subgraph Vercel["Vercel Edge Functions (the only backend)"]
+    CHAT["/api/chat<br/>persona re-validation · sys-prompt at request time<br/>moderation in/out · 20 msgs/day/persona"]
+    PLAN["/api/plan<br/>wording polish only · strict JSON · 3/day"]
+    GUARD["shared guards: 30/hr/IP rate cap ·<br/>daily $ counter w/ hard stop ·<br/>CHAT_ENABLED / POLISH_ENABLED kill-switches"]
     CHAT --- GUARD
     PLAN --- GUARD
   end
 
-  REDIS[("Upstash Redis<br/>counters only 🔜")]
-  CLAUDE["Anthropic Claude<br/>MODEL env, default haiku"]
-  SENTRY["Sentry 🔜"]
-  POSTHOG["PostHog 🔜"]
+  REDIS[("Upstash Redis<br/>counters only, hashed IPs<br/>(absent → in-memory best effort)")]
+  CLAUDE["Anthropic Claude<br/>MODEL env, default claude-haiku-4-5"]
+  SENTRY["Sentry<br/>(envelope API, FE + edge)"]
+  POSTHOG["PostHog<br/>(capture REST, funnel events)"]
 
   UI -- "fetch POST" --> CHAT
   UI -- "fetch POST" --> PLAN

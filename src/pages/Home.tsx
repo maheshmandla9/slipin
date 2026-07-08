@@ -9,11 +9,14 @@ export default function Home() {
     <main className="mx-auto max-w-4xl px-4 py-10">
       <section className="text-center">
         <h1 className="text-4xl font-extrabold tracking-tight">
-          Design who you're <span className="text-accent">becoming</span>.
+          Design whom you always dreamt of <span className="text-accent">becoming</span>...
         </h1>
         <p className="mx-auto mt-3 max-w-xl text-ink/70">
           {APP_NAME} lets you build your target personality on a living avatar, feel it in a
           conversation, and practice being it — a few real-world minutes a day.
+        </p>
+        <p className="mx-auto mt-2 max-w-xl text-sm font-medium text-ink/50">
+          Leave the Old Skin and Wear a New One with ease. SlipIN to your most desirable Personality with the help of most advanced techniques.
         </p>
       </section>
 

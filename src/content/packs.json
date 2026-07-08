@@ -15,6 +15,51 @@
     "identityScript": "I don't chase the room's attention; I set the room's tempo. My stillness is louder than other people's noise."
   },
   {
+    "id": "pack-actor-funny",
+    "module": "actor",
+    "name": "The Comic Relief",
+    "description": "Quick timing, physical looseness, and the fearlessness to look ridiculous on purpose. For comedic roles, improv, and scenes that live or die on rhythm.",
+    "traitIds": ["t-chest-playfulness", "t-mouth-showman", "t-mouth-storyteller", "t-chest-enthusiasm", "t-hands-bold-action"],
+    "emotions": [
+      { "id": "e-playfulness", "intensity": 8 },
+      { "id": "e-enthusiasm", "intensity": 7 },
+      { "id": "e-joy", "intensity": 6 }
+    ],
+    "planTemplateId": "plan-actor",
+    "gesture": "One exaggerated shoulder shrug into a loose, easy grin",
+    "identityScript": "I find the funny before I find the fear. Timing is just confidence with a rhythm. I commit to the bit all the way."
+  },
+  {
+    "id": "pack-actor-street-smart",
+    "module": "actor",
+    "name": "Street Smart",
+    "description": "Fast reads, sharp instincts, zero wasted words. The character who's three steps ahead because they never stopped watching the room.",
+    "traitIds": ["t-head-observer", "t-head-first-principles", "t-mouth-assertive", "t-hands-initiative", "t-feet-environment"],
+    "emotions": [
+      { "id": "e-confidence", "intensity": 7 },
+      { "id": "e-clarity", "intensity": 8 },
+      { "id": "e-determination", "intensity": 6 }
+    ],
+    "planTemplateId": "plan-actor",
+    "gesture": "Quick scan of the room left to right, then a small knowing nod",
+    "identityScript": "I read the room before the room reads me. I say less than I know. Every move is already three moves ahead."
+  },
+  {
+    "id": "pack-actor-quiet-threat",
+    "module": "actor",
+    "name": "The Quiet Threat",
+    "description": "Cold stillness, controlled voice, menace that never has to raise itself. For antagonists and any role where the power is in what's withheld.",
+    "traitIds": ["t-head-calm-pressure", "t-head-hard-mind", "t-chest-presence", "t-mouth-slow-voice", "t-feet-grounded-walk"],
+    "emotions": [
+      { "id": "e-confidence", "intensity": 7 },
+      { "id": "e-clarity", "intensity": 7 },
+      { "id": "e-determination", "intensity": 6 }
+    ],
+    "planTemplateId": "plan-actor",
+    "gesture": "One unhurried step forward, chin level, eyes fixed — no other movement",
+    "identityScript": "I don't raise my voice; I lower everyone else's. Stillness is the threat. I've already decided how this ends."
+  },
+  {
     "id": "pack-self-calm-confident",
     "module": "self-transform",
     "name": "Calm Confident Self",

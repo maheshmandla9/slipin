@@ -1,6 +1,11 @@
 import { Link, useParams } from 'react-router-dom';
 import { APP_NAME } from '../config/app';
-import { MODULES, packsForModule } from '../content';
+import { MODULES, packsForModule, templateById } from '../content';
+
+// Missions from plan-actor that showcase the body-language/voice drills on the
+// landing page — pulled live from content so the preview can never drift out
+// of sync with what's actually in the daily loop.
+const ACTOR_DRILL_MISSION_IDS = ['m-act-14', 'm-act-15', 'm-act-13'];
 
 // Per-module landing copy for niche acquisition channels (BRD §3.4):
 // /m/actor, /m/student, … are the URLs shared in each community.
@@ -79,6 +84,16 @@ export default function ModuleLanding() {
     );
   }
   const packs = packsForModule(meta.id);
+
+  // Live preview of the body-language/voice drills for the actor landing page —
+  // pulled straight from plan-actor's mission pool (never bundled as static copy).
+  const drillPreview =
+    meta.id === 'actor'
+      ? ACTOR_DRILL_MISSION_IDS.map((id) =>
+          templateById('plan-actor')?.missionPool.find((m) => m.id === id)?.text.replace(/\{name\}/g, 'your character'),
+        ).filter((t): t is string => !!t)
+      : [];
+
   return (
     <main className="mx-auto max-w-2xl px-4 py-14 text-center">
       <div className="text-6xl">{meta.emoji}</div>
@@ -91,6 +106,21 @@ export default function ModuleLanding() {
           </li>
         ))}
       </ul>
+
+      {drillPreview.length > 0 && (
+        <div className="mx-auto mt-6 max-w-md rounded-xl border-2 border-accent/30 bg-accent-soft/40 p-5 text-left">
+          <p className="text-sm font-bold text-accent">🎤 Body-language & voice drills, built in</p>
+          <p className="mt-1 text-xs text-ink/60">
+            As you progress through your daily missions, you'll get drills like these to actually train the physical and vocal side of the character — not just the mindset:
+          </p>
+          <ul className="mt-3 space-y-2">
+            {drillPreview.map((text) => (
+              <li key={text} className="rounded-lg bg-white/70 p-2.5 text-xs text-ink/80">“{text}”</li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       <Link
         to={`/build/${meta.id}`}
         className="mt-10 inline-block rounded-xl bg-accent px-8 py-3.5 text-lg font-bold text-white shadow-lg hover:bg-accent/85"

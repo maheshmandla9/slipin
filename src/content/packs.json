@@ -76,6 +76,166 @@
     "animalMeta": { "animal": "Lion", "emoji": "🦁" }
   },
   {
+    "id": "pack-animal-panda",
+    "module": "animal",
+    "name": "Panda Calm",
+    "description": "Slow, unhurried, unbothered. The panda does exactly what it wants, without apology. Bring that same relaxed permission into your day.",
+    "traitIds": ["t-head-calm-pressure", "t-chest-playfulness", "t-chest-warmth", "t-mouth-slow-voice", "t-feet-rest"],
+    "emotions": [
+      { "id": "e-peace", "intensity": 8 },
+      { "id": "e-playfulness", "intensity": 7 },
+      { "id": "e-acceptance", "intensity": 6 }
+    ],
+    "planTemplateId": "plan-core",
+    "gesture": "Drop both shoulders deliberately, exhale long, and let a small smile arrive",
+    "identityScript": "I move at my own pace. I don't justify my rest or my joy. Being at ease is not laziness — it's the panda's power.",
+    "animalMeta": { "animal": "Panda", "emoji": "🐼" }
+  },
+  {
+    "id": "pack-animal-cheetah",
+    "module": "animal",
+    "name": "Cheetah Focus",
+    "description": "One target. Absolute stillness, then explosive precision. The cheetah never wastes energy — it waits, locks on, and goes.",
+    "traitIds": ["t-head-single-focus", "t-head-decisive", "t-chest-burning-drive", "t-hands-bold-action", "t-feet-tiny-steps"],
+    "emotions": [
+      { "id": "e-determination", "intensity": 9 },
+      { "id": "e-clarity", "intensity": 8 },
+      { "id": "e-courage", "intensity": 6 }
+    ],
+    "planTemplateId": "plan-core",
+    "gesture": "Eyes lock forward, body still for two seconds — then one decisive forward move",
+    "identityScript": "I eliminate noise, pick one target, and commit. I don't speed up by rushing — I speed up by removing everything else.",
+    "animalMeta": { "animal": "Cheetah", "emoji": "🐆" }
+  },
+  {
+    "id": "pack-animal-elephant",
+    "module": "animal",
+    "name": "Elephant Wisdom",
+    "description": "Long memory, deep loyalty, unshakeable steadiness. The elephant never forgets what matters — and never rushes what shouldn't be rushed.",
+    "traitIds": ["t-head-growth-mindset", "t-chest-steadiness", "t-chest-compassion-self", "t-feet-grounded-walk", "t-mouth-slow-voice"],
+    "emotions": [
+      { "id": "e-trust", "intensity": 8 },
+      { "id": "e-compassion", "intensity": 7 },
+      { "id": "e-peace", "intensity": 6 }
+    ],
+    "planTemplateId": "plan-core",
+    "gesture": "Plant both feet, take one slow breath in through the nose, then exhale fully",
+    "identityScript": "I carry what matters and let go of what doesn't. My steadiness is my strength. I move slowly and leave a lasting track.",
+    "animalMeta": { "animal": "Elephant", "emoji": "🐘" }
+  },
+  {
+    "id": "pack-animal-gorilla",
+    "module": "animal",
+    "name": "Gorilla Presence",
+    "description": "Grounded authority without aggression. The gorilla commands the room through sheer presence — no posturing, just power that's already decided.",
+    "traitIds": ["t-head-decisive", "t-chest-courage", "t-mouth-assertive", "t-hands-generous", "t-feet-grounded-walk"],
+    "emotions": [
+      { "id": "e-confidence", "intensity": 9 },
+      { "id": "e-courage", "intensity": 7 },
+      { "id": "e-warmth", "intensity": 5 }
+    ],
+    "planTemplateId": "plan-core",
+    "gesture": "Widen your stance, roll your shoulders back and down, hold stillness for three counts",
+    "identityScript": "I don't need to perform strength — I embody it. I protect what I value. My presence settles the room before I speak.",
+    "animalMeta": { "animal": "Gorilla", "emoji": "🦍" }
+  },
+  {
+    "id": "pack-animal-dolphin",
+    "module": "animal",
+    "name": "Dolphin Intelligence",
+    "description": "Playful, fast-thinking, socially brilliant. The dolphin is always learning, always connecting — the smartest energy in the water.",
+    "traitIds": ["t-chest-playfulness", "t-head-growth-mindset", "t-mouth-asks-questions", "t-hands-asks-help", "t-chest-enthusiasm"],
+    "emotions": [
+      { "id": "e-playfulness", "intensity": 8 },
+      { "id": "e-enthusiasm", "intensity": 8 },
+      { "id": "e-willingness", "intensity": 7 }
+    ],
+    "planTemplateId": "plan-core",
+    "gesture": "Quick double-tap on the sternum, then open both palms forward — ready to connect",
+    "identityScript": "I'm curious first, fast second. I ask the question others are afraid to ask. Learning and laughter are the same energy to me.",
+    "animalMeta": { "animal": "Dolphin", "emoji": "🐬" }
+  },
+  {
+    "id": "pack-animal-dog",
+    "module": "animal",
+    "name": "Dog Loyalty",
+    "description": "Unconditional warmth, relentless enthusiasm, present-moment joy. The dog is the best friend in every room — because it never stopped meaning it.",
+    "traitIds": ["t-chest-enthusiasm", "t-chest-warmth", "t-mouth-appreciates", "t-feet-morning-ritual", "t-hands-generous"],
+    "emotions": [
+      { "id": "e-enthusiasm", "intensity": 9 },
+      { "id": "e-warmth", "intensity": 9 },
+      { "id": "e-gratitude", "intensity": 7 }
+    ],
+    "planTemplateId": "plan-core",
+    "gesture": "Shake off your shoulders, take a full breath, and let genuine warmth arrive in your face",
+    "identityScript": "I show up fully. I don't half-greet or half-love. Every day I'm genuinely glad to be here — and people feel that.",
+    "animalMeta": { "animal": "Dog", "emoji": "🐕" }
+  },
+  {
+    "id": "pack-animal-cat",
+    "module": "animal",
+    "name": "Cat Independence",
+    "description": "Self-assured, graceful, impossible to pressure. The cat doesn't need your approval — and that's exactly why everyone wants it.",
+    "traitIds": ["t-head-self-worth", "t-chest-presence", "t-feet-rest", "t-mouth-slow-voice", "t-head-abundance"],
+    "emotions": [
+      { "id": "e-confidence", "intensity": 8 },
+      { "id": "e-peace", "intensity": 7 },
+      { "id": "e-acceptance", "intensity": 6 }
+    ],
+    "planTemplateId": "plan-core",
+    "gesture": "Settle completely still for five seconds, then move with slow deliberate intention",
+    "identityScript": "I don't chase, I attract. I don't apologize for my comfort. I am perfectly comfortable being exactly myself in any room.",
+    "animalMeta": { "animal": "Cat", "emoji": "🐈" }
+  },
+  {
+    "id": "pack-animal-penguin",
+    "module": "animal",
+    "name": "Penguin Discipline",
+    "description": "Penguins march through blizzards, side by side, every single day. No drama. Just show up, keep moving, look after each other.",
+    "traitIds": ["t-feet-shows-up", "t-hands-finisher", "t-chest-steadiness", "t-feet-morning-ritual", "t-chest-warmth"],
+    "emotions": [
+      { "id": "e-determination", "intensity": 8 },
+      { "id": "e-trust", "intensity": 7 },
+      { "id": "e-warmth", "intensity": 6 }
+    ],
+    "planTemplateId": "plan-core",
+    "gesture": "Stand tall, chin level, arms loose at sides — the stance of someone who will still be here tomorrow",
+    "identityScript": "I don't wait for perfect conditions. I don't need a crowd or applause. I show up because showing up is the whole job.",
+    "animalMeta": { "animal": "Penguin", "emoji": "🐧" }
+  },
+  {
+    "id": "pack-animal-crow",
+    "module": "animal",
+    "name": "Crow Cunning",
+    "description": "The most intelligent bird alive. Problem-solves, adapts, remembers faces, uses tools. Brings that same strategic observation into everything you do.",
+    "traitIds": ["t-head-observer", "t-head-first-principles", "t-hands-craft", "t-mouth-asks-questions", "t-feet-environment"],
+    "emotions": [
+      { "id": "e-clarity", "intensity": 9 },
+      { "id": "e-willingness", "intensity": 7 },
+      { "id": "e-confidence", "intensity": 6 }
+    ],
+    "planTemplateId": "plan-core",
+    "gesture": "Head tilts slightly — one beat of observation — then a nod of understood",
+    "identityScript": "I notice what others walk past. I ask 'why' one layer deeper than anyone else. I collect patterns and use them when it matters.",
+    "animalMeta": { "animal": "Crow", "emoji": "🐦‍⬛" }
+  },
+  {
+    "id": "pack-animal-kangaroo",
+    "module": "animal",
+    "name": "Kangaroo Power",
+    "description": "Built for the long bound — powerful legs, protective instinct, and a bounce-back resilience that looks effortless once it's trained.",
+    "traitIds": ["t-chest-courage", "t-hands-bold-action", "t-feet-tiny-steps", "t-head-optimism", "t-chest-burning-drive"],
+    "emotions": [
+      { "id": "e-courage", "intensity": 8 },
+      { "id": "e-determination", "intensity": 8 },
+      { "id": "e-willingness", "intensity": 7 }
+    ],
+    "planTemplateId": "plan-core",
+    "gesture": "One powerful push off both feet — a single forward bound — then land steady",
+    "identityScript": "I'm built for momentum. I carry what's important with me and leave the rest behind. Every setback is just the load-up before the leap.",
+    "animalMeta": { "animal": "Kangaroo", "emoji": "🦘" }
+  },
+  {
     "id": "pack-physical-athlete",
     "module": "physical",
     "name": "Athlete Mindset",

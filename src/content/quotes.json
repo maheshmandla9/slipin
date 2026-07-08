@@ -1,0 +1,14 @@
+[
+  {
+    "id": "q-belief",
+    "text": "You are what you believe in.",
+    "pages": ["home"],
+    "side": "left"
+  },
+  {
+    "id": "q-reality",
+    "text": "Your personal reality changes only when your personality changes.",
+    "pages": ["home"],
+    "side": "right"
+  }
+]

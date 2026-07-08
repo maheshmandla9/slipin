@@ -38,6 +38,17 @@ export interface Technique {
   durationMin: number;
 }
 
+/** Floating testimonial-style quotes shown in page margins (`FloatingQuotes`). */
+export interface Quote {
+  id: string;
+  text: string;
+  author?: string;
+  /** Page keys this quote is eligible to appear on — e.g. 'home', 'today', 'chat'. */
+  pages: string[];
+  /** Preferred margin; if omitted, quotes alternate left/right in list order. */
+  side?: 'left' | 'right';
+}
+
 export interface MissionTemplate {
   id: string;
   text: string; // may contain {name} / {trait} placeholders

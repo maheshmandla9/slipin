@@ -1,10 +1,11 @@
 import { z } from 'zod';
-import type { Trait, EmotionalQuality, Technique, Pack, PlanTemplate, ModuleId } from '../types';
+import type { Trait, EmotionalQuality, Technique, Pack, PlanTemplate, ModuleId, Quote } from '../types';
 import traitsJson from './traits.json';
 import emotionsJson from './emotions.json';
 import techniquesJson from './techniques.json';
 import packsJson from './packs.json';
 import planTemplatesJson from './planTemplates.json';
+import quotesJson from './quotes.json';
 
 const zone = z.enum(['head', 'chest', 'mouth', 'hands', 'feet']);
 const moduleId = z.enum([
@@ -73,11 +74,20 @@ const packSchema = z.object({
   animalMeta: z.object({ animal: z.string(), emoji: z.string() }).optional(),
 });
 
+const quoteSchema = z.object({
+  id: z.string(),
+  text: z.string(),
+  author: z.string().optional(),
+  pages: z.array(z.string()).min(1),
+  side: z.enum(['left', 'right']).optional(),
+});
+
 export const TRAITS: Trait[] = z.array(traitSchema).parse(traitsJson);
 export const EMOTIONS: EmotionalQuality[] = z.array(emotionSchema).parse(emotionsJson);
 export const TECHNIQUES: Technique[] = z.array(techniqueSchema).parse(techniquesJson);
 export const PLAN_TEMPLATES: PlanTemplate[] = z.array(planTemplateSchema).parse(planTemplatesJson);
 export const PACKS: Pack[] = z.array(packSchema).parse(packsJson);
+export const QUOTES: Quote[] = z.array(quoteSchema).parse(quotesJson);
 
 // Referential integrity — fail loudly at startup in dev if content is inconsistent.
 const traitIds = new Set(TRAITS.map((t) => t.id));
@@ -118,3 +128,6 @@ export const MODULES: ModuleMeta[] = [
 ];
 
 export const moduleMeta = (m: ModuleId) => MODULES.find((x) => x.id === m)!;
+
+/** Quotes eligible for a given page key (e.g. 'home', 'today') — new ones just need that key in their `pages` array. */
+export const quotesForPage = (page: string) => QUOTES.filter((q) => q.pages.includes(page));

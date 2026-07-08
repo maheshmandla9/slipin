@@ -179,6 +179,9 @@ export default function Builder() {
         {INSPIRATION_MODULES.includes(module) && (
           <div className="mt-8 rounded-xl border border-ink/10 bg-accent-soft/40 p-4">
             <p className="text-sm font-semibold">Don't see who you're looking for?</p>
+            <p className="mt-0.5 text-xs text-ink/50">
+              📋 Note: requests are collected but not yet reviewed — we're working on setting up the feedback loop. Drop your request anyway and we'll pick it up when it's live.
+            </p>
             {requestSent ? (
               <p className="mt-1 text-sm text-ink/60">Got it — thanks! Requests guide what we add next.</p>
             ) : (

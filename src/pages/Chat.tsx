@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { sendChat, type ChatMode } from '../lib/api';
 import { track } from '../lib/analytics';
@@ -18,7 +18,10 @@ const EMPTY: Record<ChatMode, Msg[]> = { persona: [], guide: [] };
 
 export default function Chat() {
   const persona = useActivePersona();
-  const [mode, setMode] = useState<ChatMode>('persona');
+  const [searchParams] = useSearchParams();
+  // Deep-linkable so other pages (e.g. Persona) can send the user straight into
+  // a specific tab instead of always landing on the persona chat by default.
+  const [mode, setMode] = useState<ChatMode>(searchParams.get('mode') === 'guide' ? 'guide' : 'persona');
   const [conversations, setConversations] = useState<Record<ChatMode, Msg[]>>(EMPTY);
   const [input, setInput] = useState('');
   const [busy, setBusy] = useState(false);

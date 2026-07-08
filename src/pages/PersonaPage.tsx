@@ -94,12 +94,23 @@ export default function PersonaPage() {
             <p className="mt-1 text-sm text-ink/80">{persona.gesture}</p>
           </div>
 
-          <div className="flex flex-wrap gap-2 pt-2">
-            <Link to="/today" className="rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-white hover:bg-accent/85">
+          <div className="flex flex-col gap-2 pt-2">
+            <div className="flex flex-wrap gap-2">
+              <Link
+                to="/chat"
+                className="flex-1 rounded-lg border border-accent px-4 py-2 text-center text-sm font-semibold text-accent hover:bg-accent-soft"
+              >
+                💬 Chat with {persona.name}
+              </Link>
+              <Link
+                to="/chat?mode=guide"
+                className="flex-1 rounded-lg border border-accent px-4 py-2 text-center text-sm font-semibold text-accent hover:bg-accent-soft"
+              >
+                🧭 Your Guide
+              </Link>
+            </div>
+            <Link to="/today" className="rounded-lg bg-accent px-4 py-2 text-center text-sm font-semibold text-white hover:bg-accent/85">
               📅 Start today's practice
-            </Link>
-            <Link to="/chat" className="rounded-lg border border-accent px-4 py-2 text-sm font-semibold text-accent hover:bg-accent-soft">
-              💬 Chat with {persona.name}
             </Link>
           </div>
         </div>

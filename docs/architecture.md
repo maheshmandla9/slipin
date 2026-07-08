@@ -25,7 +25,7 @@
 
 Both prompts are built per request from persona JSON and share the same non-negotiable safety boundaries (not a companion/romantic partner, no clinical advice, refuse harm). The mode is a `mode: 'persona'|'guide'` field on the `/api/chat` body.
 
-`/persona` links directly into both: "Chat with [name]" → `/chat`, "Your Guide" → `/chat?mode=guide` (Chat.tsx reads the `mode` query param on mount to open the right tab) — both sit above "Start today's practice" so neither is buried behind the other.
+`/persona` links directly into both: "Chat with [name]" → `/chat`, "Your Personal Guide" → `/chat?mode=guide` (Chat.tsx reads the `mode` query param on mount to open the right tab) — both sit above "Start today's practice" so neither is buried behind the other.
 
 **Evidence & report**: debrief wins auto-log as evidence; `/evidence` adds manual evidence-hunt entries + 14-day activity dots; `/report` shows then-vs-now scores, trend bars, proof highlights, PNG share card, and JSON export/import.
 

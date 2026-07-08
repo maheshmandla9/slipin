@@ -92,7 +92,7 @@ export default function Chat() {
       <div className="flex items-center justify-between gap-2">
         <div className="flex gap-2">
           <Tab value="persona" label={`💬 ${persona.name}`} />
-          <Tab value="guide" label="🧭 Your Guide" />
+          <Tab value="guide" label="🧭 Your Personal Guide" />
         </div>
         <Link to="/persona" className="text-sm text-ink/50 underline">persona</Link>
       </div>

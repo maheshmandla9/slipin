@@ -106,7 +106,7 @@ export default function PersonaPage() {
                 to="/chat?mode=guide"
                 className="flex-1 rounded-lg border border-accent px-4 py-2 text-center text-sm font-semibold text-accent hover:bg-accent-soft"
               >
-                🧭 Your Guide
+                🧭 Your Personal Guide
               </Link>
             </div>
             <Link to="/today" className="rounded-lg bg-accent px-4 py-2 text-center text-sm font-semibold text-white hover:bg-accent/85">

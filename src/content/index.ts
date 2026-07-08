@@ -109,11 +109,11 @@ export interface ModuleMeta {
 export const MODULES: ModuleMeta[] = [
   { id: 'actor', name: 'Actor Prep', tagline: 'Build a character you can wear on stage and in the room.', emoji: '🎭' },
   { id: 'self-transform', name: 'Self-Transformation', tagline: 'Design the next version of you and practice being them daily.', emoji: '🦋' },
+    { id: 'manifestation', name: 'Manifestation', tagline: 'Vivid vision, felt gratitude, one aligned step per day.', emoji: '🧘🪄' },
   { id: 'student', name: 'Student', tagline: 'Confidence, focus, and a voice that shows up in class.', emoji: '🎓' },
-  { id: 'emotional', name: 'Emotional Management', tagline: 'Stay steady in hot moments — respond, don’t react.', emoji: '🌊' },
   { id: 'animal', name: 'Animal Personas', tagline: 'Borrow the lion’s courage. Seriously — it works.', emoji: '🦁' },
   { id: 'physical', name: 'Physical Prep', tagline: 'Become the athlete in your head before the gym.', emoji: '💪' },
-  { id: 'manifestation', name: 'Manifestation', tagline: 'Vivid vision, felt gratitude, one aligned step per day.', emoji: '✨' },
+  { id: 'emotional', name: 'Emotional Management', tagline: 'Stay steady in hot moments — respond, don’t react.', emoji: '❤️‍🔥🕊️' },
   { id: 'freehand', name: 'Free-Hand', tagline: 'Build from the full library, zone by zone.', emoji: '🎨' },
 ];
 

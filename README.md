@@ -6,10 +6,12 @@ Anonymous personality-transformation web app: design a target persona on a layer
 
 ```bash
 npm install
-npm run dev        # Vite dev server on :5173
+npm run dev        # Vite dev server on :5173 — frontend AND /api/* functions, no other tools needed
 npm run build      # typecheck + production build
 npm run typecheck  # tsc only
 ```
+
+`npm run dev` is the only local dev command you need. A small Vite plugin (`vite-plugin-local-api.ts`) runs the `/api/*.ts` edge functions in-process, so `/api/chat` and `/api/plan` work locally without the Vercel CLI, `vercel dev`, or any second server. Put server secrets in `.env.local` (git-ignored) — the plugin loads it into `process.env` for the functions; Vite's usual `VITE_`-prefixed vars still work the normal way for the frontend. Vercel/Netlify only enter the picture at actual deploy — they're hosting, not a dev dependency.
 
 ## Environment variables
 
@@ -28,6 +30,8 @@ All optional — every integration no-ops gracefully when its key is absent. LLM
 | `VITE_POSTHOG_KEY` | frontend | Product analytics |
 
 ## Deploy (Vercel)
+
+Vercel is used only for hosting/deploy, not local dev (see Setup above).
 
 1. Push the repo to GitHub and **Import Project** in Vercel (framework auto-detects Vite; `vercel.json` handles SPA rewrites, `/api/*.ts` deploy as Edge Functions automatically).
 2. Set env vars (Project → Settings → Environment Variables): `ANTHROPIC_API_KEY` at minimum; add Upstash vars for real cross-region caps ([upstash.com](https://upstash.com) free tier → create a Redis DB → copy REST URL + token).

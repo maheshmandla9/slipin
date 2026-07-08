@@ -1,0 +1,392 @@
+[
+  {
+    "id": "t-head-self-belief",
+    "name": "Unshakeable Self-Belief",
+    "zone": "head",
+    "category": "confidence",
+    "description": "A settled conviction that you can figure things out and belong in the room.",
+    "reframeScript": "Old thought: 'I'm not good enough for this.' New frame: 'I've handled hard things before. I learn fast. Belonging is decided by showing up, not by permission.'",
+    "ifThenTemplate": { "trigger": "I catch myself thinking I can't do something", "response": "I say 'I can't do it YET' and name one small step I can take now" },
+    "hawkinsLevel": 310
+  },
+  {
+    "id": "t-head-growth-mindset",
+    "name": "Growth Mindset",
+    "zone": "head",
+    "category": "focus",
+    "description": "Sees ability as trainable; treats failure as data, not verdict.",
+    "reframeScript": "Old thought: 'I failed, so I'm a failure.' New frame: 'That attempt returned information. Adjust one variable and run it again.'",
+    "ifThenTemplate": { "trigger": "something I try doesn't work", "response": "I write down one thing it taught me before feeling anything about it" },
+    "hawkinsLevel": 350
+  },
+  {
+    "id": "t-head-calm-pressure",
+    "name": "Calm Under Pressure",
+    "zone": "head",
+    "category": "calm",
+    "description": "Pressure narrows others; it slows you down and sharpens you.",
+    "reframeScript": "Old thought: 'This is too much.' New frame: 'Pressure is attention. My only job is the next 60 seconds, done slowly.'",
+    "ifThenTemplate": { "trigger": "I feel pressure spike", "response": "I exhale for 6 seconds and pick the single next action" },
+    "hawkinsLevel": 250
+  },
+  {
+    "id": "t-head-decisive",
+    "name": "Decisiveness",
+    "zone": "head",
+    "category": "courage",
+    "description": "Makes reversible decisions fast and commits to them fully.",
+    "reframeScript": "Old thought: 'What if I choose wrong?' New frame: 'Most decisions are two-way doors. Deciding fast buys me time to correct.'",
+    "ifThenTemplate": { "trigger": "I've been weighing options for more than 2 minutes", "response": "I choose the option I'd defend to a friend and move" },
+    "hawkinsLevel": 310
+  },
+  {
+    "id": "t-head-optimism",
+    "name": "Practical Optimism",
+    "zone": "head",
+    "category": "energy",
+    "description": "Defaults to 'there's a way through' and looks for it.",
+    "reframeScript": "Old thought: 'This will probably go badly.' New frame: 'Unknown outcome. I'll bias it my way with one prepared move.'",
+    "ifThenTemplate": { "trigger": "I predict a bad outcome", "response": "I name one concrete thing that could make it go well and do it" },
+    "hawkinsLevel": 310
+  },
+  {
+    "id": "t-head-self-worth",
+    "name": "Quiet Self-Worth",
+    "zone": "head",
+    "category": "confidence",
+    "description": "Worth is settled; feedback lands on the work, not the self.",
+    "reframeScript": "Old thought: 'Their criticism means I'm less.' New frame: 'The work got notes. I stay whole. Notes make the work better.'",
+    "ifThenTemplate": { "trigger": "I receive criticism", "response": "I say 'useful' and separate one actionable note from the sting" },
+    "hawkinsLevel": 350
+  },
+  {
+    "id": "t-head-single-focus",
+    "name": "Single-Point Focus",
+    "zone": "head",
+    "category": "focus",
+    "description": "One thing at a time, chosen deliberately, finished visibly.",
+    "reframeScript": "Old thought: 'I need to handle everything at once.' New frame: 'Everything waits better than it multitasks. One target, then the next.'",
+    "ifThenTemplate": { "trigger": "I notice myself juggling tasks", "response": "I write the open loops down and return to exactly one" },
+    "hawkinsLevel": 250
+  },
+  {
+    "id": "t-head-abundance",
+    "name": "Abundance Thinking",
+    "zone": "head",
+    "category": "energy",
+    "description": "Assumes opportunities are renewable; loses scarcity panic.",
+    "reframeScript": "Old thought: 'This is my only shot.' New frame: 'Shots are manufactured. If this one misses, I know how to make another.'",
+    "ifThenTemplate": { "trigger": "I feel scarcity panic about an opportunity", "response": "I list two other routes to the same outcome" },
+    "hawkinsLevel": 310
+  },
+  {
+    "id": "t-chest-courage",
+    "name": "Front-Foot Courage",
+    "zone": "chest",
+    "category": "courage",
+    "description": "Feels fear and moves anyway — chest open, first to step in.",
+    "reframeScript": "Old thought: 'The fear means stop.' New frame: 'The fear means it matters. Courage is fear plus one step forward.'",
+    "ifThenTemplate": { "trigger": "I feel fear before an action", "response": "I count down 3-2-1 and start before the count ends" },
+    "hawkinsLevel": 200
+  },
+  {
+    "id": "t-chest-steadiness",
+    "name": "Emotional Steadiness",
+    "zone": "chest",
+    "category": "calm",
+    "description": "Feelings visit; they don't drive. The needle moves slowly.",
+    "reframeScript": "Old thought: 'This feeling is an emergency.' New frame: 'This is weather. I can act well inside any weather.'",
+    "ifThenTemplate": { "trigger": "a strong emotion surges", "response": "I name it out loud ('anger, 7/10') before I respond to anyone" },
+    "hawkinsLevel": 250
+  },
+  {
+    "id": "t-chest-warmth",
+    "name": "Open Warmth",
+    "zone": "chest",
+    "category": "connection",
+    "description": "Leads with genuine goodwill; people relax around you.",
+    "reframeScript": "Old thought: 'Stay guarded so I don't get hurt.' New frame: 'Warmth is strength on display. I can be open and still have edges.'",
+    "ifThenTemplate": { "trigger": "I meet someone new", "response": "I find one thing to genuinely appreciate within the first minute" },
+    "hawkinsLevel": 500
+  },
+  {
+    "id": "t-chest-gratitude",
+    "name": "Gratitude Reflex",
+    "zone": "chest",
+    "category": "energy",
+    "description": "Spots what's working before what's broken, by habit.",
+    "reframeScript": "Old thought: 'Nothing is going right.' New frame: 'Something always is. Finding it is a skill, and I'm training it.'",
+    "ifThenTemplate": { "trigger": "I start the day", "response": "I name one specific thing I'm glad exists before touching my phone" },
+    "hawkinsLevel": 540
+  },
+  {
+    "id": "t-chest-enthusiasm",
+    "name": "Lit-Up Enthusiasm",
+    "zone": "chest",
+    "category": "energy",
+    "description": "Brings visible energy that makes work feel like play.",
+    "reframeScript": "Old thought: 'Being excited looks naive.' New frame: 'Energy is contagious and rare. I'd rather be the source than the sink.'",
+    "ifThenTemplate": { "trigger": "I start a task I chose", "response": "I say what excites me about it in one sentence, out loud if alone" },
+    "hawkinsLevel": 310
+  },
+  {
+    "id": "t-chest-playfulness",
+    "name": "Playful Lightness",
+    "zone": "chest",
+    "category": "connection",
+    "description": "Holds life loosely; finds the game inside the grind.",
+    "reframeScript": "Old thought: 'This is all deadly serious.' New frame: 'Serious goals, light grip. Play makes me braver and smarter.'",
+    "ifThenTemplate": { "trigger": "a situation gets tense", "response": "I ask myself 'what would make this 10% more fun?' and try it" },
+    "hawkinsLevel": 350
+  },
+  {
+    "id": "t-chest-compassion-self",
+    "name": "Self-Compassion",
+    "zone": "chest",
+    "category": "calm",
+    "description": "Talks to yourself like someone you're coaching, not prosecuting.",
+    "reframeScript": "Old thought: 'I always mess this up, idiot.' New frame: 'I'd never coach a friend that way. Note the miss, keep the person.'",
+    "ifThenTemplate": { "trigger": "I catch harsh self-talk", "response": "I restate it the way I'd say it to a friend I respect" },
+    "hawkinsLevel": 350
+  },
+  {
+    "id": "t-chest-presence",
+    "name": "Grounded Presence",
+    "zone": "chest",
+    "category": "presence",
+    "description": "Fully here — people feel listened to, rooms feel held.",
+    "reframeScript": "Old thought: 'I should be somewhere else doing something else.' New frame: 'The only place anything ever happens is here. I arrive fully.'",
+    "ifThenTemplate": { "trigger": "my mind drifts mid-conversation", "response": "I feel my feet on the floor and repeat the speaker's last phrase silently" },
+    "hawkinsLevel": 400
+  },
+  {
+    "id": "t-mouth-assertive",
+    "name": "Clear Assertive Voice",
+    "zone": "mouth",
+    "category": "confidence",
+    "description": "Says what it means in short sentences, without apology padding.",
+    "reframeScript": "Old thought: 'Softening everything keeps me safe.' New frame: 'Clarity is kindness. People can handle my actual sentence.'",
+    "ifThenTemplate": { "trigger": "I'm about to hedge ('maybe, sort of, just')", "response": "I drop the hedge and say the plain sentence" },
+    "hawkinsLevel": 310
+  },
+  {
+    "id": "t-mouth-slow-voice",
+    "name": "Slow Deliberate Speech",
+    "zone": "mouth",
+    "category": "presence",
+    "description": "Speaks 20% slower with pauses; every word lands heavier.",
+    "reframeScript": "Old thought: 'Talk fast or lose them.' New frame: 'Pace signals status. The pause is where authority lives.'",
+    "ifThenTemplate": { "trigger": "I notice myself rushing my words", "response": "I finish the sentence, take one full breath, then continue slower" },
+    "hawkinsLevel": 250
+  },
+  {
+    "id": "t-mouth-kind-selftalk",
+    "name": "Kind Inner Narrator",
+    "zone": "mouth",
+    "category": "calm",
+    "description": "The voice in your head talks like a great coach: honest, warm, forward-looking.",
+    "reframeScript": "Old thought: 'My inner voice just is what it is.' New frame: 'The narrator is trainable. Every rephrase is a rep.'",
+    "ifThenTemplate": { "trigger": "my inner voice turns hostile", "response": "I ask 'is that true, and is it useful?' and rewrite the line" },
+    "hawkinsLevel": 350
+  },
+  {
+    "id": "t-mouth-asks-questions",
+    "name": "Curious Questioner",
+    "zone": "mouth",
+    "category": "connection",
+    "description": "Asks one more question than most people; conversations go deeper.",
+    "reframeScript": "Old thought: 'I should have something impressive to say.' New frame: 'The most impressive thing in a room is genuine curiosity.'",
+    "ifThenTemplate": { "trigger": "a conversation stalls", "response": "I ask 'what's the story behind that?' and actually listen" },
+    "hawkinsLevel": 350
+  },
+  {
+    "id": "t-mouth-says-no",
+    "name": "Graceful No",
+    "zone": "mouth",
+    "category": "courage",
+    "description": "Declines cleanly, without a three-paragraph apology.",
+    "reframeScript": "Old thought: 'Saying no makes me a bad person.' New frame: 'Every no protects a yes I already made. Clean is kind.'",
+    "ifThenTemplate": { "trigger": "I'm asked for something I don't want to give", "response": "I say 'I can't take that on' and stop talking" },
+    "hawkinsLevel": 310
+  },
+  {
+    "id": "t-mouth-storyteller",
+    "name": "Vivid Storyteller",
+    "zone": "mouth",
+    "category": "presence",
+    "description": "Turns answers into small stories with a beginning, tension, and point.",
+    "reframeScript": "Old thought: 'Just give the facts, nobody wants more.' New frame: 'People remember scenes, not summaries. I give them a scene.'",
+    "ifThenTemplate": { "trigger": "someone asks how something went", "response": "I answer with a 30-second scene: where I was, what almost went wrong, what happened" },
+    "hawkinsLevel": 310
+  },
+  {
+    "id": "t-mouth-speaks-up",
+    "name": "First-Five-Minutes Voice",
+    "zone": "mouth",
+    "category": "courage",
+    "description": "Says something in every meeting or class within the first five minutes.",
+    "reframeScript": "Old thought: 'I'll speak when I have something perfect.' New frame: 'Early voice is easy voice. Perfection is how silence wins.'",
+    "ifThenTemplate": { "trigger": "a group discussion starts", "response": "I contribute one sentence — a question counts — within 5 minutes" },
+    "hawkinsLevel": 200
+  },
+  {
+    "id": "t-mouth-appreciates",
+    "name": "Out-Loud Appreciator",
+    "zone": "mouth",
+    "category": "connection",
+    "description": "Says the nice thing instead of just thinking it.",
+    "reframeScript": "Old thought: 'They probably know, it'd be awkward to say.' New frame: 'Unspoken appreciation helps no one. Thirty seconds of awkward beats years of unsaid.'",
+    "ifThenTemplate": { "trigger": "I notice something good about someone", "response": "I tell them within the hour, specifically" },
+    "hawkinsLevel": 500
+  },
+  {
+    "id": "t-hands-bold-action",
+    "name": "Bold First Move",
+    "zone": "hands",
+    "category": "courage",
+    "description": "Starts before feeling ready; momentum is the strategy.",
+    "reframeScript": "Old thought: 'I need to prepare more first.' New frame: 'Readiness follows action. The first ugly step teaches more than ten plans.'",
+    "ifThenTemplate": { "trigger": "I catch myself over-preparing", "response": "I ship the smallest real version within 10 minutes" },
+    "hawkinsLevel": 200
+  },
+  {
+    "id": "t-hands-deep-work",
+    "name": "Deep Work Blocks",
+    "zone": "hands",
+    "category": "focus",
+    "description": "Protects 60–90 minute stretches of undistracted making.",
+    "reframeScript": "Old thought: 'I'll focus once things calm down.' New frame: 'Things never calm down. Focus is built with walls, not weather.'",
+    "ifThenTemplate": { "trigger": "I sit down to important work", "response": "phone goes in another room and a visible timer starts" },
+    "hawkinsLevel": 310
+  },
+  {
+    "id": "t-hands-initiative",
+    "name": "Owner's Initiative",
+    "zone": "hands",
+    "category": "confidence",
+    "description": "Acts like the outcome is yours; fixes what you find.",
+    "reframeScript": "Old thought: 'Not my job, someone else will handle it.' New frame: 'The person I'm becoming handles what's in front of them.'",
+    "ifThenTemplate": { "trigger": "I notice a problem nobody owns", "response": "I either fix it in 5 minutes or explicitly hand it to someone" },
+    "hawkinsLevel": 310
+  },
+  {
+    "id": "t-hands-finisher",
+    "name": "Relentless Finisher",
+    "zone": "hands",
+    "category": "discipline",
+    "description": "Closes loops; the last 10% is where you're strongest.",
+    "reframeScript": "Old thought: 'Mostly done is done.' New frame: 'The value lives in shipped. I finish small things completely rather than big things almost.'",
+    "ifThenTemplate": { "trigger": "I want to abandon a task at 90%", "response": "I set a 15-minute timer to close it fully before switching" },
+    "hawkinsLevel": 310
+  },
+  {
+    "id": "t-hands-generous",
+    "name": "Generous Hands",
+    "zone": "hands",
+    "category": "connection",
+    "description": "Gives help, credit, and small favors first, without scorekeeping.",
+    "reframeScript": "Old thought: 'Giving first means being used.' New frame: 'Generosity compounds. I give from surplus and keep my boundaries.'",
+    "ifThenTemplate": { "trigger": "I see someone stuck on something I know", "response": "I offer one concrete piece of help, then let them drive" },
+    "hawkinsLevel": 500
+  },
+  {
+    "id": "t-hands-craft",
+    "name": "Craftsman's Standard",
+    "zone": "hands",
+    "category": "discipline",
+    "description": "Does ordinary things extraordinarily well; quality is identity.",
+    "reframeScript": "Old thought: 'Nobody notices the details.' New frame: 'I notice. The standard is for me, and it leaks into everything.'",
+    "ifThenTemplate": { "trigger": "I'm about to submit anything", "response": "I take one extra pass asking 'would I sign this?'" },
+    "hawkinsLevel": 350
+  },
+  {
+    "id": "t-hands-asks-help",
+    "name": "Asks for Help Early",
+    "zone": "hands",
+    "category": "courage",
+    "description": "Treats asking as a power move, not an admission.",
+    "reframeScript": "Old thought: 'Asking for help proves I can't do it.' New frame: 'Stuck alone for hours is the real failure. Strong people borrow strength fast.'",
+    "ifThenTemplate": { "trigger": "I've been stuck for more than 20 minutes", "response": "I send one specific question to one specific person" },
+    "hawkinsLevel": 310
+  },
+  {
+    "id": "t-feet-morning-ritual",
+    "name": "Morning Ignition Ritual",
+    "zone": "feet",
+    "category": "discipline",
+    "description": "Owns the first 30 minutes of the day; the day follows.",
+    "reframeScript": "Old thought: 'My mornings are chaos, that's just me.' New frame: 'Whoever owns the first 30 minutes owns the day. I decided mine last night.'",
+    "ifThenTemplate": { "trigger": "I wake up", "response": "feet on floor, water, and my wear-session before any screen" },
+    "hawkinsLevel": 310
+  },
+  {
+    "id": "t-feet-grounded-walk",
+    "name": "Grounded Walk",
+    "zone": "feet",
+    "category": "presence",
+    "description": "Walks slower, taller, heels-first — arrives rather than scurries.",
+    "reframeScript": "Old thought: 'How I walk doesn't matter.' New frame: 'The body leads, the mind follows. A grounded walk is a wearable belief.'",
+    "ifThenTemplate": { "trigger": "I walk through any doorway", "response": "shoulders back, pace down 20%, eyes level" },
+    "hawkinsLevel": 250
+  },
+  {
+    "id": "t-feet-shows-up",
+    "name": "Shows Up Daily",
+    "zone": "feet",
+    "category": "discipline",
+    "description": "Repetition over intensity; never misses twice.",
+    "reframeScript": "Old thought: 'I broke the streak, it's ruined.' New frame: 'Missing once is data. Missing twice is a decision. I don't decide that.'",
+    "ifThenTemplate": { "trigger": "I miss a daily practice", "response": "I do a 2-minute minimum version before bed, no negotiation" },
+    "hawkinsLevel": 310
+  },
+  {
+    "id": "t-feet-rest",
+    "name": "Deliberate Recovery",
+    "zone": "feet",
+    "category": "calm",
+    "description": "Rests on schedule, not on collapse; energy is managed like money.",
+    "reframeScript": "Old thought: 'Rest is what's left after everything else.' New frame: 'Recovery is training. Tired me makes decisions I have to clean up later.'",
+    "ifThenTemplate": { "trigger": "it hits my chosen wind-down time", "response": "screens off and one page of anything on paper" },
+    "hawkinsLevel": 250
+  },
+  {
+    "id": "t-feet-environment",
+    "name": "Environment Architect",
+    "zone": "feet",
+    "category": "focus",
+    "description": "Shapes the room so the right action is the easy action.",
+    "reframeScript": "Old thought: 'I just need more willpower.' New frame: 'Willpower is for emergencies. Design beats discipline — I move the cue, not the mountain.'",
+    "ifThenTemplate": { "trigger": "I fail at the same habit twice in one week", "response": "I change one thing in the room instead of blaming myself" },
+    "hawkinsLevel": 350
+  },
+  {
+    "id": "t-feet-anchor-object",
+    "name": "Anchor Carrier",
+    "zone": "feet",
+    "category": "presence",
+    "description": "Keeps one physical object that fires the persona on touch.",
+    "reframeScript": "Old thought: 'Objects are just objects.' New frame: 'Rituals live in things. My anchor is a doorway I can carry.'",
+    "ifThenTemplate": { "trigger": "I face a hard moment", "response": "I touch my anchor object and take one slow breath as the persona" },
+    "hawkinsLevel": 250
+  },
+  {
+    "id": "t-feet-tiny-steps",
+    "name": "Tiny Daily Step",
+    "zone": "feet",
+    "category": "discipline",
+    "description": "Moves toward the vision every day, even if the step is 60 seconds.",
+    "reframeScript": "Old thought: 'Small steps are pointless against a big goal.' New frame: 'Direction times days beats intensity times bursts. Sixty seconds counts.'",
+    "ifThenTemplate": { "trigger": "the day is ending and I haven't advanced my goal", "response": "I do a 60-second version of the next step right now" },
+    "hawkinsLevel": 310
+  },
+  {
+    "id": "t-feet-early-arrival",
+    "name": "Arrives Early",
+    "zone": "feet",
+    "category": "calm",
+    "description": "Ten minutes early everywhere; enters composed, never scrambling.",
+    "reframeScript": "Old thought: 'I work best under last-minute pressure.' New frame: 'Rushed me is a worse me. The early minutes are where composure is manufactured.'",
+    "ifThenTemplate": { "trigger": "I plan any commitment", "response": "I set departure 10 minutes earlier than feels necessary" },
+    "hawkinsLevel": 250
+  }
+]

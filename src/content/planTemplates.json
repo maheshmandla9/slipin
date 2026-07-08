@@ -1,0 +1,105 @@
+[
+  {
+    "id": "plan-core",
+    "module": "self-transform",
+    "weekStructure": [
+      "Put it on — get comfortable wearing the persona in private and easy moments",
+      "Wear it out — bring the persona into low-stakes public moments",
+      "Stress-test — deliberately wear it in one hard moment per day",
+      "Own it — act from the persona by default and collect the proof"
+    ],
+    "missionPool": [
+      { "id": "m-core-1", "text": "Do your wear-session before any screen time this morning.", "difficulty": 1, "category": "discipline" },
+      { "id": "m-core-2", "text": "Fire your {trait} if-then once today, on purpose.", "difficulty": 1 },
+      { "id": "m-core-3", "text": "Walk through one doorway as {name} — posture, pace, eyes.", "difficulty": 1, "category": "presence" },
+      { "id": "m-core-4", "text": "Catch one old-pattern thought and reframe it using your {trait} script.", "difficulty": 1 },
+      { "id": "m-core-5", "text": "Ask 'What would {name} do?' before one decision today — then do it.", "difficulty": 2 },
+      { "id": "m-core-6", "text": "Hold your persona for one full conversation without breaking.", "difficulty": 2, "category": "connection" },
+      { "id": "m-core-7", "text": "Do one thing today you'd normally avoid, as {name}.", "difficulty": 2, "category": "courage" },
+      { "id": "m-core-8", "text": "Fire your anchor before the hardest moment on today's calendar.", "difficulty": 2, "category": "calm" },
+      { "id": "m-core-9", "text": "Say one sentence today with your persona's voice — slower, clearer, no hedging.", "difficulty": 2, "category": "confidence" },
+      { "id": "m-core-10", "text": "Run a mid-day pattern interrupt: 'old me or new me?' — choose new me visibly.", "difficulty": 2 },
+      { "id": "m-core-11", "text": "Wear {name} through your single hardest moment today, start to finish.", "difficulty": 3, "category": "courage" },
+      { "id": "m-core-12", "text": "Tell one person about something as {name} would tell it — energy, pace, presence.", "difficulty": 3, "category": "presence" },
+      { "id": "m-core-13", "text": "Do a full 10-minute deep-wear session instead of the short one.", "difficulty": 3, "category": "focus" },
+      { "id": "m-core-14", "text": "Spend one hour acting from {trait} continuously — set a timer, stay in it.", "difficulty": 3 },
+      { "id": "m-core-15", "text": "Log one piece of evidence that you're becoming {name} — be specific.", "difficulty": 1, "category": "energy" }
+    ],
+    "wearScriptTemplate": "Sit or stand somewhere you won't be interrupted.\n\n1. ARRIVE (30s) — Feet flat. One slow breath out. Let the old day drain.\n2. THE MAGIC IF (60s) — Ask: 'If I were {name}, how would I be standing right now?' Adjust your body until it answers.\n3. BUILD (2 min) — Put on today's focus: {traits}. Say the belief once out loud. Feel where it sits in your body.\n4. GESTURE (30s) — Perform your signature gesture: {gesture}. Three times, then once invisibly.\n5. SCENE (60s) — See one specific moment from today. Run it as {name} — what you say, how it resolves.\n6. SEAL (15s) — Fire your anchor. Say: 'Today, I am {name}.' Open your eyes and go."
+  },
+  {
+    "id": "plan-actor",
+    "module": "actor",
+    "weekStructure": [
+      "Foundation — body, voice, and physical life of the character",
+      "Inner life — beliefs, wants, and emotional register",
+      "Integration — full scenes in-character under mild pressure",
+      "Performance — hold the character under real stakes"
+    ],
+    "missionPool": [
+      { "id": "m-act-1", "text": "Do the voice & walk drill as {name} — ten steps, one sentence, combined.", "difficulty": 1, "category": "presence" },
+      { "id": "m-act-2", "text": "Perform your psychological gesture three times, then fire the invisible version.", "difficulty": 1 },
+      { "id": "m-act-3", "text": "Order a coffee / greet someone in {name}'s physicality — no one should 'notice', but you should feel it.", "difficulty": 2, "category": "courage" },
+      { "id": "m-act-4", "text": "Answer one real question today the way {name} would answer it.", "difficulty": 2, "category": "confidence" },
+      { "id": "m-act-5", "text": "Improvise 2 minutes alone as {name} reacting to today's news.", "difficulty": 2, "category": "presence" },
+      { "id": "m-act-6", "text": "Write three lines of {name}'s inner monologue during a dull moment today.", "difficulty": 1, "category": "focus" },
+      { "id": "m-act-7", "text": "Hold {name}'s emotional register ({traits}) through one full conversation.", "difficulty": 3, "category": "connection" },
+      { "id": "m-act-8", "text": "Run today's hardest scene twice in rehearsal: once as you, once as {name}. Note the difference.", "difficulty": 2 },
+      { "id": "m-act-9", "text": "Do a full 10-minute deep-wear: dissolve your habits, assume {name}'s from the feet up.", "difficulty": 3 },
+      { "id": "m-act-10", "text": "Stay in {name}'s walk and posture for one continuous public hour.", "difficulty": 3, "category": "discipline" },
+      { "id": "m-act-11", "text": "Find one real person today who moves or speaks like {name}. Steal one detail.", "difficulty": 1, "category": "energy" },
+      { "id": "m-act-12", "text": "Log evidence: one moment today where {name} felt more real than acting.", "difficulty": 1 }
+    ],
+    "wearScriptTemplate": "Rehearsal space: anywhere you can move a little.\n\n1. NEUTRAL (30s) — Shake out your own habits. Breath out. Blank body.\n2. FEET FIRST (60s) — Step into {name}'s stance and walk. Let the walk tell you the tempo.\n3. CENTER (60s) — Where does {name} lead from — chest, chin, hips? Move from there.\n4. VOICE (60s) — One sentence in {name}'s voice: pace, pitch, weight. Repeat until it lands.\n5. GESTURE (30s) — {gesture}. Full size three times, then invisible.\n6. THE IF (60s) — 'If I were {name} walking into today's first scene…' Play the entry.\n7. LOCK (15s) — Anchor. 'Scene one. I am {name}.' Go."
+  },
+  {
+    "id": "plan-student",
+    "module": "student",
+    "weekStructure": [
+      "Private reps — build the persona where nobody's watching",
+      "Small rooms — one visible act per day among peers",
+      "Bigger rooms — speak up where it counts",
+      "Default mode — the new you is just how you show up"
+    ],
+    "missionPool": [
+      { "id": "m-stu-1", "text": "Say one sentence in class or a group within the first 5 minutes — a question counts.", "difficulty": 2, "category": "courage" },
+      { "id": "m-stu-2", "text": "Do your wear-session before leaving your room this morning.", "difficulty": 1, "category": "discipline" },
+      { "id": "m-stu-3", "text": "Greet one person by name today as {name} would — eyes up, clear voice.", "difficulty": 1, "category": "connection" },
+      { "id": "m-stu-4", "text": "Sit one row closer to the front than usual.", "difficulty": 1, "category": "courage" },
+      { "id": "m-stu-5", "text": "Ask one question you'd normally swallow — in class, office hours, or a message.", "difficulty": 2, "category": "courage" },
+      { "id": "m-stu-6", "text": "Do one 25-minute focused block with your phone in another room.", "difficulty": 1, "category": "focus" },
+      { "id": "m-stu-7", "text": "Start the assignment you're avoiding — 10 ugly minutes as {name}.", "difficulty": 2, "category": "discipline" },
+      { "id": "m-stu-8", "text": "When the old excuse starts, say 'old me or new me?' and take one new-me step.", "difficulty": 1 },
+      { "id": "m-stu-9", "text": "Contribute one full thought (2–3 sentences) in a discussion today.", "difficulty": 3, "category": "courage" },
+      { "id": "m-stu-10", "text": "Invite someone to study or hang out — as {name}, direct and light.", "difficulty": 3, "category": "connection" },
+      { "id": "m-stu-11", "text": "Walk across campus as {name} — pace down, shoulders back, eyes level.", "difficulty": 1, "category": "presence" },
+      { "id": "m-stu-12", "text": "Log evidence: one moment today the new you showed up before you had to force it.", "difficulty": 1 }
+    ],
+    "wearScriptTemplate": "Before you leave your room (3 minutes):\n\n1. RESET (30s) — Feet down, one big exhale. Yesterday is filed.\n2. THE IF (60s) — 'If I were {name} walking into today, how would I move?' Stand that way now.\n3. TODAY'S REP (60s) — Pick the one moment you'll use today — a class, a hallway, a conversation. See {name} handle it: {traits}.\n4. GESTURE (20s) — {gesture}. Big once, invisible once.\n5. GO (10s) — Anchor on. 'Today, I am {name}.' Door open."
+  },
+  {
+    "id": "plan-manifest",
+    "module": "manifestation",
+    "weekStructure": [
+      "The vision — make it vivid, sensory, and felt daily",
+      "The identity — become the person the vision belongs to",
+      "Aligned action — one real step per day, no exceptions",
+      "Evidence — track what's matching and double down"
+    ],
+    "missionPool": [
+      { "id": "m-man-1", "text": "Run your future-self scene for 3 minutes — sensory detail, then let the feeling of 'already done' rise.", "difficulty": 1, "category": "energy" },
+      { "id": "m-man-2", "text": "Write one identity affirmation: 'I am becoming someone who…' — and say it as {name}.", "difficulty": 1 },
+      { "id": "m-man-3", "text": "Ask the interrogative version: 'Will I make this real? How?' — write the first answer down.", "difficulty": 1, "category": "focus" },
+      { "id": "m-man-4", "text": "Take today's aligned action: one tiny real-world step toward the vision, within 24 hours.", "difficulty": 2, "category": "discipline" },
+      { "id": "m-man-5", "text": "Evidence hunt: log one real moment today that matched the vision, however small.", "difficulty": 1, "category": "energy" },
+      { "id": "m-man-6", "text": "Spend 2 minutes in gratitude for one thing as if it just arrived.", "difficulty": 1, "category": "calm" },
+      { "id": "m-man-7", "text": "Tell one person about your project or goal — as {name}, matter-of-fact, no apology.", "difficulty": 3, "category": "courage" },
+      { "id": "m-man-8", "text": "Do the step you've been circling for days. Ten minutes, ugly version, today.", "difficulty": 3, "category": "discipline" },
+      { "id": "m-man-9", "text": "Upgrade one cue in your environment so the vision is visible daily.", "difficulty": 2, "category": "focus" },
+      { "id": "m-man-10", "text": "When doubt speaks, reframe with your {trait} script — then take one visible step anyway.", "difficulty": 2 },
+      { "id": "m-man-11", "text": "Act for one hour as the person the vision already happened to: {traits}.", "difficulty": 3, "category": "presence" },
+      { "id": "m-man-12", "text": "Before bed, replay today's aligned action and feel it count.", "difficulty": 1, "category": "calm" }
+    ],
+    "wearScriptTemplate": "Quiet spot, 4 minutes:\n\n1. SETTLE (30s) — Slow exhale. Drop the day.\n2. THE SCENE (2 min) — Step inside the vision as {name}. Not watching it — living it. What do you see, hear, feel in your hands? Let the emotion of 'already done' fill your chest: {traits}.\n3. THE PERSON (45s) — 'The person this happened to — how do they carry themselves today?' Stand that way. {gesture}.\n4. THE BRIDGE (30s) — Name today's one aligned action. See yourself doing it easily.\n5. SEAL (15s) — Anchor. 'It's already in motion, and I am {name}.' Go make the step real."
+  }
+]

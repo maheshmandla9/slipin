@@ -1,0 +1,108 @@
+[
+  {
+    "id": "pack-actor-lead",
+    "module": "actor",
+    "name": "Leading Presence",
+    "description": "The grounded, magnetic center-of-the-room quality. For roles that hold the screen — and auditions that hold the panel.",
+    "traitIds": ["t-head-calm-pressure", "t-chest-presence", "t-mouth-slow-voice", "t-mouth-storyteller", "t-feet-grounded-walk"],
+    "emotions": [
+      { "id": "e-confidence", "intensity": 7 },
+      { "id": "e-courage", "intensity": 6 },
+      { "id": "e-peace", "intensity": 4 }
+    ],
+    "planTemplateId": "plan-actor",
+    "gesture": "Slowly open both hands outward from the sternum, palms up — offering the room something",
+    "identityScript": "I don't chase the room's attention; I set the room's tempo. My stillness is louder than other people's noise."
+  },
+  {
+    "id": "pack-self-calm-confident",
+    "module": "self-transform",
+    "name": "Calm Confident Self",
+    "description": "The classic upgrade: settled self-belief, a steady chest, a kind inner voice, and bold first moves — starting every morning.",
+    "traitIds": ["t-head-self-belief", "t-chest-steadiness", "t-mouth-kind-selftalk", "t-hands-bold-action", "t-feet-morning-ritual"],
+    "emotions": [
+      { "id": "e-confidence", "intensity": 7 },
+      { "id": "e-gratitude", "intensity": 6 },
+      { "id": "e-peace", "intensity": 5 }
+    ],
+    "planTemplateId": "plan-core",
+    "gesture": "One slow breath in while rolling the shoulders back and down, chin level",
+    "identityScript": "I am someone who figures things out. Feelings visit me; they don't drive. I move first and adjust in motion."
+  },
+  {
+    "id": "pack-student-speaker",
+    "module": "student",
+    "name": "Fearless Speaker",
+    "description": "For the student who knows the answer and never says it. Voice in the first five minutes, courage on tap, help asked early.",
+    "traitIds": ["t-head-self-worth", "t-chest-courage", "t-mouth-speaks-up", "t-hands-asks-help", "t-feet-early-arrival"],
+    "emotions": [
+      { "id": "e-courage", "intensity": 7 },
+      { "id": "e-enthusiasm", "intensity": 6 },
+      { "id": "e-trust", "intensity": 5 }
+    ],
+    "planTemplateId": "plan-student",
+    "gesture": "Plant both feet flat, sit or stand one inch taller, hand ready to raise",
+    "identityScript": "My voice belongs in the room. Speaking early is easy speaking. A question from me is a gift, not a risk."
+  },
+  {
+    "id": "pack-emotional-calm",
+    "module": "emotional",
+    "name": "Unshakeable Calm",
+    "description": "For self-managing the hot moments — anger, impulse, overwhelm. Slow the needle, name the weather, respond on purpose.",
+    "traitIds": ["t-head-calm-pressure", "t-chest-steadiness", "t-mouth-kind-selftalk", "t-feet-anchor-object", "t-feet-rest"],
+    "emotions": [
+      { "id": "e-peace", "intensity": 6 },
+      { "id": "e-trust", "intensity": 6 },
+      { "id": "e-compassion", "intensity": 5 }
+    ],
+    "planTemplateId": "plan-core",
+    "gesture": "Press thumb and forefinger together while exhaling for six slow counts",
+    "identityScript": "I am the calmest person in my own storms. Feelings are weather; I am the ground. I answer, I don't react."
+  },
+  {
+    "id": "pack-animal-lion",
+    "module": "animal",
+    "name": "Lion Heart",
+    "description": "Front-foot courage, decisive moves, a voice that doesn't hedge. Walk like the savanna is yours — because today, it is.",
+    "traitIds": ["t-head-decisive", "t-chest-courage", "t-mouth-assertive", "t-hands-bold-action", "t-feet-grounded-walk"],
+    "emotions": [
+      { "id": "e-courage", "intensity": 8 },
+      { "id": "e-determination", "intensity": 7 },
+      { "id": "e-joy", "intensity": 4 }
+    ],
+    "planTemplateId": "plan-core",
+    "gesture": "Chin up, chest open, one slow deliberate step forward",
+    "identityScript": "I move first. I speak plainly. Fear is just the smell of something worth doing — and I walk toward it.",
+    "animalMeta": { "animal": "Lion", "emoji": "🦁" }
+  },
+  {
+    "id": "pack-physical-athlete",
+    "module": "physical",
+    "name": "Athlete Mindset",
+    "description": "Two weeks of identity prep before the body work. Show up daily, finish everything, recover on purpose — the athlete arrives before the muscles do.",
+    "traitIds": ["t-head-single-focus", "t-chest-enthusiasm", "t-mouth-kind-selftalk", "t-hands-finisher", "t-feet-shows-up"],
+    "emotions": [
+      { "id": "e-determination", "intensity": 8 },
+      { "id": "e-willingness", "intensity": 6 },
+      { "id": "e-enthusiasm", "intensity": 6 }
+    ],
+    "planTemplateId": "plan-core",
+    "gesture": "Clap once, then set both hands on hips — the pre-game stance",
+    "identityScript": "I am an athlete in training, starting from the inside. I never miss twice. My body follows the person I practice being."
+  },
+  {
+    "id": "pack-manifest-creator",
+    "module": "manifestation",
+    "name": "Magnetic Creator",
+    "description": "Grounded manifestation: a vivid vision, gratitude in the body, and one aligned real-world step every single day.",
+    "traitIds": ["t-head-abundance", "t-chest-gratitude", "t-mouth-appreciates", "t-hands-bold-action", "t-feet-tiny-steps"],
+    "emotions": [
+      { "id": "e-gratitude", "intensity": 7 },
+      { "id": "e-joy", "intensity": 6 },
+      { "id": "e-trust", "intensity": 6 }
+    ],
+    "planTemplateId": "plan-manifest",
+    "gesture": "Both hands over the heart, then open outward — receiving, then releasing into action",
+    "identityScript": "What I want is already in motion because I move daily. I see evidence everywhere, I say thank you out loud, and I take the step."
+  }
+]

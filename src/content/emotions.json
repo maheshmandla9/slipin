@@ -1,0 +1,16 @@
+[
+  { "id": "e-courage", "name": "Courage", "hawkinsLevel": 200, "intensityRange": [1, 10], "description": "Empowered to face fear and act; the gateway emotion." },
+  { "id": "e-trust", "name": "Trust", "hawkinsLevel": 250, "intensityRange": [1, 10], "description": "Neutral, unattached steadiness; life is workable." },
+  { "id": "e-willingness", "name": "Willingness", "hawkinsLevel": 310, "intensityRange": [1, 10], "description": "Optimistic yes-energy; obstacles become interesting." },
+  { "id": "e-acceptance", "name": "Acceptance", "hawkinsLevel": 350, "intensityRange": [1, 10], "description": "Forgiving, harmonious; takes ownership without blame." },
+  { "id": "e-confidence", "name": "Confidence", "hawkinsLevel": 360, "intensityRange": [1, 10], "description": "Settled certainty in your own capability." },
+  { "id": "e-clarity", "name": "Clarity", "hawkinsLevel": 400, "intensityRange": [1, 10], "description": "Reasoned, understanding; sees the system, not just the moment." },
+  { "id": "e-warmth", "name": "Warmth", "hawkinsLevel": 500, "intensityRange": [1, 10], "description": "Open-hearted goodwill toward people, including yourself." },
+  { "id": "e-gratitude", "name": "Gratitude", "hawkinsLevel": 510, "intensityRange": [1, 10], "description": "Feeling as if it's already given; abundance in the body." },
+  { "id": "e-enthusiasm", "name": "Enthusiasm", "hawkinsLevel": 520, "intensityRange": [1, 10], "description": "Lit-up eagerness; energy that pulls others along." },
+  { "id": "e-joy", "name": "Joy", "hawkinsLevel": 540, "intensityRange": [1, 10], "description": "Serene delight arising from within, not circumstances." },
+  { "id": "e-playfulness", "name": "Playfulness", "hawkinsLevel": 540, "intensityRange": [1, 10], "description": "Light grip on life; finds the game inside the task." },
+  { "id": "e-compassion", "name": "Compassion", "hawkinsLevel": 555, "intensityRange": [1, 10], "description": "Tender strength; kindness with a spine." },
+  { "id": "e-peace", "name": "Peace", "hawkinsLevel": 600, "intensityRange": [1, 10], "description": "Deep stillness; nothing needs to be different right now." },
+  { "id": "e-determination", "name": "Determination", "hawkinsLevel": 310, "intensityRange": [1, 10], "description": "Committed forward drive; the decision has been made." }
+]

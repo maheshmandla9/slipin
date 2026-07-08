@@ -1,0 +1,167 @@
+[
+  {
+    "id": "tech-magic-if",
+    "name": "The Magic If",
+    "source": "Stanislavski",
+    "steps": [
+      "Stand at the threshold of the room or situation.",
+      "Ask: 'If I were {name}, how would I enter this room?'",
+      "Answer with your body first — posture, pace, eyes — then walk in that way."
+    ],
+    "durationMin": 1
+  },
+  {
+    "id": "tech-psych-gesture",
+    "name": "Psychological Gesture",
+    "source": "Michael Chekhov",
+    "steps": [
+      "Recall your persona's signature gesture.",
+      "Perform it fully and physically three times, exaggerated.",
+      "Shrink it to an invisible inner version you can fire anywhere."
+    ],
+    "durationMin": 2
+  },
+  {
+    "id": "tech-voice-drill",
+    "name": "Voice & Walk Drill",
+    "source": "Acting craft",
+    "steps": [
+      "Say one everyday sentence in the persona's voice — pace, volume, tone.",
+      "Walk ten steps as the persona walks.",
+      "Combine: walk and speak the sentence together."
+    ],
+    "durationMin": 1
+  },
+  {
+    "id": "tech-morning-rehearsal",
+    "name": "Morning Rehearsal",
+    "source": "Mental-rehearsal practice",
+    "steps": [
+      "Close your eyes. See one specific scene from today as the persona.",
+      "Run the scene start to finish — what you say, how you stand, how it resolves.",
+      "Let the matching emotion rise and hold it in the body for 60 seconds."
+    ],
+    "durationMin": 4
+  },
+  {
+    "id": "tech-pattern-interrupt",
+    "name": "Pattern Interrupt",
+    "source": "Meditation / behavior change",
+    "steps": [
+      "Mid-day, when you catch an old reaction starting, say: 'Old me or new me?'",
+      "Take one breath.",
+      "Choose one visible new-me action, however small."
+    ],
+    "durationMin": 1
+  },
+  {
+    "id": "tech-reframe",
+    "name": "Cognitive Reframe",
+    "source": "CBT-style reframing",
+    "steps": [
+      "Catch the old thought and write it verbatim.",
+      "Ask: is it true? is it useful?",
+      "Write the persona's version and say it once out loud."
+    ],
+    "durationMin": 2
+  },
+  {
+    "id": "tech-if-then",
+    "name": "If-Then Intentions",
+    "source": "Gollwitzer implementation intentions",
+    "steps": [
+      "Pick one trigger situation you will definitely meet today.",
+      "Pre-load: 'IF [trigger], THEN I [persona response].'",
+      "Say it three times so it fires without deciding."
+    ],
+    "durationMin": 1
+  },
+  {
+    "id": "tech-anchor",
+    "name": "Physical Anchor",
+    "source": "Anchoring practice",
+    "steps": [
+      "During a rehearsal peak, press thumb and finger together (or touch your anchor object).",
+      "Repeat over several sessions until the touch recalls the state.",
+      "Fire the anchor right before hard moments."
+    ],
+    "durationMin": 2
+  },
+  {
+    "id": "tech-third-person",
+    "name": "Batman Effect",
+    "source": "Third-person self-talk research",
+    "steps": [
+      "When stuck or stressed, ask: 'What would {name} do?'",
+      "Answer in third person: '{name} would…'",
+      "Do that thing within two minutes."
+    ],
+    "durationMin": 1
+  },
+  {
+    "id": "tech-premeditation",
+    "name": "Morning Premeditation",
+    "source": "Stoic practice",
+    "steps": [
+      "Name the hardest moment likely today.",
+      "See yourself meeting it as the persona — calmly, prepared.",
+      "Decide your first sentence or move in advance."
+    ],
+    "durationMin": 2
+  },
+  {
+    "id": "tech-evening-review",
+    "name": "Evening Review",
+    "source": "Stoic practice",
+    "steps": [
+      "Score today in-character from 1–10.",
+      "Name one win as the persona and one slip into the old pattern.",
+      "Set one intention for tomorrow. No self-punishment — data only."
+    ],
+    "durationMin": 3
+  },
+  {
+    "id": "tech-one-virtue",
+    "name": "One Trait Per Week",
+    "source": "Benjamin Franklin's virtue rotation",
+    "steps": [
+      "This week, only the focus trait gets deliberate practice.",
+      "Other traits ride along — no extra effort on them.",
+      "Next week, rotate. Depth beats breadth."
+    ],
+    "durationMin": 1
+  },
+  {
+    "id": "tech-deep-wear",
+    "name": "Deep Wear Session",
+    "source": "Full-identity immersion practice",
+    "steps": [
+      "Sit. Two minutes: watch old-pattern thoughts pass without holding them.",
+      "Five minutes: build the persona from the feet up — walk, chest, voice, beliefs.",
+      "Three minutes: as the persona, mentally live tonight and tomorrow morning."
+    ],
+    "durationMin": 10
+  },
+  {
+    "id": "tech-emotion-ladder",
+    "name": "Emotion Laddering",
+    "source": "Hawkins-style emotional scale",
+    "steps": [
+      "Name where you actually are right now, without judgment.",
+      "Find the feeling one rung up — not the summit, just one rung.",
+      "Do one small act that expresses that one-rung-up feeling."
+    ],
+    "durationMin": 2
+  },
+  {
+    "id": "tech-evidence-hunt",
+    "name": "Evidence Hunt",
+    "source": "Selective-attention training",
+    "steps": [
+      "Once today, catch one real moment that matched your persona or vision.",
+      "Log it in one sentence in your evidence log.",
+      "Notice the feeling of 'it's already starting'."
+    ],
+    "durationMin": 1
+  }
+]

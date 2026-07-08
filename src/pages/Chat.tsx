@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { sendChat } from '../lib/api';
+import { track } from '../lib/analytics';
 import { useActivePersona } from '../store/appStore';
 
 interface Msg {
@@ -43,10 +44,12 @@ export default function Chat() {
     setBusy(false);
     if (!res.ok) {
       setNotice(res.message ?? 'Chat is unavailable right now.');
+      if (res.errorCode === 'llm_error') track('llm_error', { fn: 'chat' });
       setMsgs(msgs); // roll back the unsent message
       setInput(content);
       return;
     }
+    track(res.blocked ? 'moderation_blocked' : 'chat_msg');
     if (typeof res.remaining === 'number') setRemaining(res.remaining);
     setMsgs([...history, { role: 'assistant', content: res.reply ?? '…', blocked: res.blocked }]);
   };

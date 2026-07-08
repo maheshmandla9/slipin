@@ -6,6 +6,7 @@ import { buildPlan, currentWeek, todaysMissions } from '../engine/planEngine';
 import { computeStreak } from '../engine/streaks';
 import { newId, todayStr, useActivePersona, useAppStore, usePlanFor, useTodayLog } from '../store/appStore';
 import { polishPlan } from '../lib/api';
+import { track } from '../lib/analytics';
 import type { DailyLog } from '../types';
 
 function Step({ n, title, done, children }: { n: number; title: string; done: boolean; children?: React.ReactNode }) {
@@ -34,7 +35,10 @@ export default function Today() {
 
   // Deterministic + offline: auto-generate the template plan when missing.
   useEffect(() => {
-    if (persona && !plan) addPlan(buildPlan(persona));
+    if (persona && !plan) {
+      addPlan(buildPlan(persona));
+      track('plan_generated', { module: persona.module });
+    }
   }, [persona, plan, addPlan]);
 
   const [score, setScore] = useState(7);
@@ -51,8 +55,10 @@ export default function Today() {
     setPolishing(false);
     if (!res.ok || !res.weeks) {
       setPolishNote(res.message ?? 'Polish unavailable — template plan kept.');
+      if (res.errorCode === 'llm_error') track('llm_error', { fn: 'plan' });
       return;
     }
+    track('plan_polished', { module: persona.module });
     addPlan({
       ...plan,
       polished: true,
@@ -99,11 +105,11 @@ export default function Today() {
 
   const toggleMission = (id: string) => {
     const cur = currentLog();
+    const done = cur.missionsDone.includes(id);
+    if (!done) track('mission_done');
     upsertLog({
       ...cur,
-      missionsDone: cur.missionsDone.includes(id)
-        ? cur.missionsDone.filter((x) => x !== id)
-        : [...cur.missionsDone, id],
+      missionsDone: done ? cur.missionsDone.filter((x) => x !== id) : [...cur.missionsDone, id],
     });
   };
 
@@ -114,6 +120,7 @@ export default function Today() {
     if (win.trim()) {
       addEvidence({ id: newId(), date: todayStr(), personaId: persona.id, text: win.trim() });
     }
+    track('debrief_done', { score });
   };
 
   return (
@@ -177,7 +184,10 @@ export default function Today() {
                 </ul>
               </details>
               <button
-                onClick={() => save({ wearDone: true })}
+                onClick={() => {
+                  save({ wearDone: true });
+                  track('wear_session_done');
+                }}
                 className="mt-3 rounded-lg bg-accent px-5 py-2 font-semibold text-white hover:bg-accent/85"
               >
                 It's on — I'm wearing it

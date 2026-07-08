@@ -1,6 +1,6 @@
 # Architecture — living doc, updated at the end of every phase
 
-*Status: end of Phase 3. Sections marked 🔜 land in later phases.*
+*Status: end of Phase 4. Sections marked 🔜 land in later phases.*
 
 ## 1. User-facing flows
 
@@ -29,8 +29,21 @@ src/App.tsx             header (APP_NAME) · routes · persistent DisclaimerFoot
   /            → pages/Home.tsx          module grid (content MODULES)
   /build/:mod  → pages/Builder.tsx       pack picker → zone editor (Avatar + trait toggles + emotion sliders)
   /persona     → pages/PersonaPage.tsx   dressed avatar + chips + identity script
-  /today       → pages/Today.tsx         4-step daily loop; auto-builds plan if missing
+  /today       → pages/Today.tsx         4-step daily loop; auto-builds plan if missing; ✨ polish button
+  /chat        → pages/Chat.tsx          session-only persona chat (nothing persisted)
+  /evidence    → pages/Evidence.tsx      proof timeline + evidence-hunt input + 14-day dots
+  /report      → pages/Report.tsx        then-vs-now stats, score bars, share card, export/import
   /crisis      → pages/Crisis.tsx        crisis resources (footer links here)
+
+lib/analytics.ts   PostHog capture REST (no SDK); no-op without VITE_POSTHOG_KEY.
+                   Events: persona_created, plan_generated, plan_polished, wear_session_done,
+                   mission_done, debrief_done, chat_msg, moderation_blocked, llm_error,
+                   report_viewed, card_shared
+lib/sentry.ts      window.onerror + unhandledrejection → Sentry envelope API; no-op without DSN
+lib/recovery.ts    pre-hydration corrupt-blob check (main.tsx loads App dynamically AFTER it);
+                   corrupt blob moved to `slipin-app-state-v1-corrupt`, banner offers download
+lib/exportImport.ts  full-state JSON download/upload (anonymous continuity)
+lib/cardExport.ts    1080×1350 PNG share card drawn on canvas (no DOM-capture dep)
 
 engine/planEngine.ts    buildPlan(persona) — deterministic (PRNG seeded from persona.id):
                         4 weeks from template.weekStructure · focus trait rotates ·
@@ -92,10 +105,10 @@ Client (`src/lib/api.ts`): all LLM calls go through these two endpoints only. No
 | Budget hit | 503 `budget_exhausted` — "try again tomorrow" notice |
 | Kill-switch off (`CHAT_ENABLED`/`POLISH_ENABLED`=false) | 503 `chat_disabled`/`polish_disabled` notice |
 | Rate/msg caps | 429 with human message; chat shows remaining-messages counter |
-| Moderation block | HTTP 200, in-character redirect reply (harm → crisis pointer), still counts against cap. `moderation_blocked` PostHog event 🔜 Phase 4 |
+| Moderation block | HTTP 200, in-character redirect reply (harm → crisis pointer), still counts against cap; `moderation_blocked` event fired |
 | Upstash not configured | Best-effort per-isolate in-memory counters (dev-friendly; noted in README) |
 | Moderation classifier infra error | Fails open — keyword filter + system-prompt guardrails still apply |
-| localStorage corrupt/full | Export offer + safe reset 🔜 Phase 4 |
+| localStorage corrupt | Pre-hydration check moves the blob to a backup key, app boots fresh, banner offers backup download |
 | Invalid content JSON | Throws at startup (dev-time catch, content is version-controlled) |
 
 ## 6. System diagram

@@ -2,7 +2,9 @@ import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import type { AppState, Persona, Plan, DailyLog, EvidenceEntry } from '../types';
 
-export const STORAGE_KEY = 'slipin-app-state-v1'; // storage key, not display name — stable across rebrands
+import { STORAGE_KEY } from './storageKey';
+
+export { STORAGE_KEY };
 
 export const todayStr = () => new Date().toISOString().slice(0, 10);
 export const newId = () =>

@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Avatar, { ZONES } from '../components/avatar/Avatar';
 import { EMOTIONS, MODULES, PACKS, TRAITS, moduleMeta, packsForModule } from '../content';
 import { newId, useAppStore } from '../store/appStore';
+import { track } from '../lib/analytics';
 import type { EmotionSetting, ModuleId, Pack, Persona, Zone } from '../types';
 
 // Curated gesture options (safety: no free-text persona content at MVP beyond the name)
@@ -97,6 +98,7 @@ export default function Builder() {
       createdAt: new Date().toISOString(),
     };
     addPersona(persona);
+    track('persona_created', { module, traits: traitIds.length, fromPack: !!pack });
     navigate('/persona');
   };
 

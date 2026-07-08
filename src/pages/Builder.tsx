@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Avatar, { ZONES } from '../components/avatar/Avatar';
-import { EMOTIONS, MODULES, PACKS, TRAITS, moduleMeta, packsForModule } from '../content';
+import { EMOTIONS, MODULES, PACKS, TRAITS, moduleMeta, packsForModule, templateById } from '../content';
 import { newId, useAppStore } from '../store/appStore';
 import { track } from '../lib/analytics';
 import type { EmotionSetting, ModuleId, Pack, Persona, Zone } from '../types';
@@ -22,6 +22,10 @@ const MAX_EMOTIONS = 4;
 // Modules where personas are typically inspired by a real or fictional figure —
 // these get the optional "inspired by" field and the request-a-persona form (ADR-001).
 const INSPIRATION_MODULES: ModuleId[] = ['icons', 'screen', 'anime', 'mimicry'];
+
+// Missions from plan-actor that showcase the body-language/voice drills right where
+// users actually pick a pack — pulled live from content so it can't drift out of sync.
+const ACTOR_DRILL_MISSION_IDS = ['m-act-14', 'm-act-15', 'm-act-13'];
 
 export default function Builder() {
   const { moduleId } = useParams();
@@ -121,10 +125,34 @@ export default function Builder() {
 
   // ---- Step 1: pick a pack (skipped for free-hand / modules without packs) ----
   if (!picked && packs.length > 0) {
+    // Live preview of the body-language/voice drills, shown right on the actor
+    // pack picker — pulled from plan-actor's real mission pool, not static copy.
+    const drillPreview =
+      module === 'actor'
+        ? ACTOR_DRILL_MISSION_IDS.map((id) =>
+            templateById('plan-actor')?.missionPool.find((m) => m.id === id)?.text.replace(/\{name\}/g, 'your character'),
+          ).filter((t): t is string => !!t)
+        : [];
+
     return (
       <main className="mx-auto max-w-3xl px-4 py-8">
         <h1 className="text-2xl font-bold">{meta.emoji} {meta.name}</h1>
         <p className="mt-1 text-ink/60">Start from a ready-made persona, or build free-hand.</p>
+
+        {drillPreview.length > 0 && (
+          <div className="mt-5 rounded-xl border-2 border-accent/30 bg-accent-soft/40 p-5">
+            <p className="text-sm font-bold text-accent">🎤 Body-language & voice drills, built in</p>
+            <p className="mt-1 text-xs text-ink/60">
+              As you progress through your daily missions, you'll get drills like these to train the physical and vocal side of the character — not just the mindset:
+            </p>
+            <ul className="mt-3 space-y-2">
+              {drillPreview.map((text) => (
+                <li key={text} className="rounded-lg bg-white/70 p-2.5 text-xs text-ink/80">“{text}”</li>
+              ))}
+            </ul>
+          </div>
+        )}
+
         <div className="mt-6 grid gap-4 sm:grid-cols-2">
           {packs.map((p) => (
             <button

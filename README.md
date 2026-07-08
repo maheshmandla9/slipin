@@ -35,7 +35,7 @@ Vercel: import the repo, set env vars above, deploy. The SPA is static; `/api/ch
 
 - [x] Phase 0 — repo + docs
 - [x] Phase 1 — scaffold, avatar (5 zones), trait/emotion library, packs, free-hand builder, localStorage persistence
-- [ ] Phase 2 — plan engine + daily loop
+- [x] Phase 2 — deterministic plan engine (focus-trait rotation, difficulty ramp, if-thens, wear scripts) + daily loop (intent → wear → missions → debrief) + streaks
 - [ ] Phase 3 — edge functions (chat + plan polish)
 - [ ] Phase 4 — evidence log, 30-day report, share card, analytics
 - [ ] Phase 5 — QA + launch

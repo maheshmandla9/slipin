@@ -4,6 +4,7 @@ import DisclaimerFooter from './components/shared/DisclaimerFooter';
 import Home from './pages/Home';
 import Builder from './pages/Builder';
 import PersonaPage from './pages/PersonaPage';
+import Today from './pages/Today';
 import Crisis from './pages/Crisis';
 
 export default function App() {
@@ -15,6 +16,7 @@ export default function App() {
             <span className="text-accent">{APP_NAME}</span>
           </Link>
           <div className="flex gap-4 text-sm font-medium text-ink/70">
+            <Link to="/today" className="hover:text-accent">Today</Link>
             <Link to="/persona" className="hover:text-accent">My persona</Link>
           </div>
         </nav>
@@ -24,6 +26,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/build/:moduleId" element={<Builder />} />
         <Route path="/persona" element={<PersonaPage />} />
+        <Route path="/today" element={<Today />} />
         <Route path="/crisis" element={<Crisis />} />
       </Routes>
 

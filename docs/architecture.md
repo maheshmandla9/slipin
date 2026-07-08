@@ -1,6 +1,6 @@
 # Architecture — living doc, updated at the end of every phase
 
-*Status: end of Phase 1. Sections marked 🔜 land in later phases.*
+*Status: end of Phase 2. Sections marked 🔜 land in later phases.*
 
 ## 1. User-facing flows
 
@@ -12,7 +12,14 @@
 
 **Returning visit:** Home shows a "Continue with your persona →" banner when personas exist; `/persona` re-renders the dressed avatar from localStorage.
 
-🔜 Phase 2: daily loop (intent → wear session → missions → debrief). 🔜 Phase 3: persona chat + plan polish. 🔜 Phase 4: evidence log, 30-day report, share card.
+**Daily loop** (`/today`, live after Phase 2):
+`Morning intent (identity script + commit button) → Wear session (week's wear script + if-then armor) → 2 micro-missions (rotating daily from the week's 6) → Evening debrief (score 1–10 + win + slip) → streak++ · win auto-logged as evidence`
+
+- The plan auto-generates from the template engine the first time `/today` opens — fully offline, no LLM.
+- One focus trait per week (Franklin rotation), mission difficulty ramps: wk1 easy → wk4 hard.
+- Streak = consecutive days with a debrief; a yesterday-ending streak survives until today is fully missed (`src/engine/streaks.ts`).
+
+🔜 Phase 3: persona chat + plan polish. 🔜 Phase 4: evidence log UI, 30-day report, share card.
 
 ## 2. Component wiring
 
@@ -22,7 +29,15 @@ src/App.tsx             header (APP_NAME) · routes · persistent DisclaimerFoot
   /            → pages/Home.tsx          module grid (content MODULES)
   /build/:mod  → pages/Builder.tsx       pack picker → zone editor (Avatar + trait toggles + emotion sliders)
   /persona     → pages/PersonaPage.tsx   dressed avatar + chips + identity script
+  /today       → pages/Today.tsx         4-step daily loop; auto-builds plan if missing
   /crisis      → pages/Crisis.tsx        crisis resources (footer links here)
+
+engine/planEngine.ts    buildPlan(persona) — deterministic (PRNG seeded from persona.id):
+                        4 weeks from template.weekStructure · focus trait rotates ·
+                        6 missions/week ranked by (difficulty ramp, focus-category match) ·
+                        if-thens from trait templates · wear script w/ placeholders filled.
+                        currentWeek/todaysMissions derive everything from plan.createdAt.
+engine/streaks.ts       computeStreak(logs) — consecutive debrief days
 
 components/avatar/Avatar.tsx   inline SVG silhouette; ZONES const = 5 hit-targets
                                (head/mouth/chest/hands/feet), each a focusable

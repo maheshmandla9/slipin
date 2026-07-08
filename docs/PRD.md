@@ -1,6 +1,13 @@
 # PRD (Detailed) — SlipIN · Personality Transformation App
-*08 Jul 2026 · Stage 2 of 3 · Stack approved · Consistent with BRD v3 · Supersedes lean PRD*
+*08 Jul 2026 · Stage 2 of 3 · Stack approved · Consistent with BRD v4 · Supersedes lean PRD*
 *Name: "SlipIN" is display-only via a single `APP_NAME` constant in `src/config/app.ts`. No hardcoded product name anywhere else — rebrand = 1 edit.*
+
+## Document Control (docs-as-code — update this table with every spec change)
+| Ver | Date | Change | Status |
+|---|---|---|---|
+| 1.0 | 2026-07-08 | Initial detailed PRD; Parts A (MVP) + B (roadmap) | Part A **SHIPPED** same day (Phases 0–5 complete) |
+| 1.1 | 2026-07-08 | As-built deltas recorded: chat split into two modes — talk to the persona as a real person + "Your Personal Guide" coach (§8 updated) · local dev runs /api fns inside `npm run dev` via Vite plugin (no Vercel CLI) · floating-quotes content type added | Shipped |
+| 1.2 | 2026-07-08 | **Part C added — Module Expansion**: Mimicry, Celebrity Icons/Legends, Movie/TV Characters, Anime Characters, Actor voice/body-language guidance, "request a persona" button. IP/publicity-rights tier strategy per BRD v4 §4.6 | **DRAFT — naming-strategy decision + build approval pending** |
 
 ═══════════════════════════════════
 # PART A — PRD_MVP (the 4–5 week build)
@@ -89,10 +96,11 @@ AppState { personas[], activePersonaId, plans[], logs[], evidence[], streak, fir
 ```
 Persistence: single JSON blob in localStorage; export/import = download/upload that blob.
 
-## 8. LLM Prompt Architecture
-- **Persona Chat** — system prompt built at request time from persona JSON:
-  `"You are {name}, a persona embodying {traits w/ intensities}. Signature gesture: {gesture}. You respond in-character as a rehearsal mirror to help the user feel what being you is like. You are NOT a companion, therapist, or romantic partner. Keep replies short, embodied, first-person. If asked for harmful/clinical/romantic content, redirect to the rehearsal purpose."`
-  - Input + output run through moderation; max 20 msgs/day/persona; reply cap ~150 tokens.
+## 8. LLM Prompt Architecture *(updated v1.1 — as-built)*
+- **Chat — two modes, one endpoint** (`mode: 'persona' | 'guide'` on `/api/chat`); both system prompts built at request time from persona JSON (`buildPersonaPrompt` / `buildGuidePrompt` in `api/_lib/persona.ts`):
+  - **Persona mode** — "You ARE {name}" — a real person who genuinely has the chosen traits: natural, embodied, human conversation; traits shape *how* they speak, not a checklist; replies vary in length (max_tokens 512).
+  - **Your Personal Guide mode** — a coach for the journey: what to practise today and how — tricks, tiny rehearsals, if-then plans, debriefs, self-assessments; tight and practical (max_tokens 320).
+  - Both share non-negotiable boundaries: not a companion/romantic partner, no clinical advice, refuse harm. Input + output moderation; max 20 msgs/day/persona (shared across modes).
 - **Plan polish** — template engine builds the plan deterministically; LLM optionally rewrites mission/script wording for the persona's voice. Prompt returns **strict JSON only** (parsed safely; on parse-fail → keep template text). Max 3 polishes/day.
 - **Model:** `claude-haiku-4-5` via `MODEL` env var (swap without code change).
 
@@ -135,7 +143,8 @@ Persistence: single JSON blob in localStorage; export/import = download/upload t
 ## Phases
 | Phase | Scope | Stack delta | Exit criteria |
 |---|---|---|---|
-| 1 — MVP (wk 1–5) | Part A | — | D7 ≥15%, wear-session ≥50% |
+| 1 — MVP (wk 1–5) | Part A | — | D7 ≥15%, wear-session ≥50% — **SHIPPED** |
+| 1.5 — Module Expansion | Part C (Mimicry · Icons · Movie/TV · Anime · Actor upgrades) | Content JSON + 4 landing pages + small schema delta; **no infra change** | Per-module landing→persona conversion; `persona_requested` demand volume |
 | 2a — Playground (+2–3 wk) | Max-3 personas in a scene (dinner/movie/cooking/conflict); single "screenwriter" LLM call roleplays all 3; user injects prompts mid-scene; Pro-tier | Same edge-fn pattern; new `/api/scene` | Scenes/user ≥2, cost/scene ≤$0.05 |
 | 2b — Audio scene-partner (+2–3 wk) | Live voice rehearsal, Actor module, EN-only, capped minutes, Pro-tier | Realtime voice (OpenAI realtime-mini class or STT+LLM+TTS), WebRTC transport | Turn latency <1.2s, cost ≤$0.15/min |
 | 3 — Accounts & sync | Supabase auth + Postgres + RLS; migrate localStorage → cloud; cross-device | Supabase free→Pro | Signup ≥25% of D30 users |
@@ -152,3 +161,62 @@ Persistence: single JSON blob in localStorage; export/import = download/upload t
 - RLS on all user rows; GDPR data-deletion endpoint; voice never stored by default.
 - Per-user monthly LLM/voice budget enforced server-side.
 - Feature flags per paid capability for controlled rollout.
+
+═══════════════════════════════════
+# PART C — Module Expansion (v1.2 · DRAFT — build pending approval)
+═══════════════════════════════════
+*Legal/IP background and tier definitions: BRD v4 §4.6. Positioning guardrail (BRD §3.3) applies unchanged: transformation training, never entertainment chat.*
+
+## C1. Scope
+| # | Addition | Type | Legal weight |
+|---|---|---|---|
+| E1 | Actor Prep: body-language & voice-imitation guidance (text drills only — no AI audio) | Content upgrade, existing module | None |
+| E2 | **Mimicry** module — the *skill* of imitation: observation → posture → gesture → voice → speech-pattern ladder; study subject is user-chosen | New module | Light (we ship method, not celebrity content) |
+| E3 | **Celebrity Icons/Legends** — adopt the mindset/qualities of iconic real figures | New module | Tiered (T0–T2) |
+| E4 | **Movie/TV Characters** (Indian + international) | New module | T3 (highest) |
+| E5 | **Anime Characters** (doubles as cosplay/comic-con prep) | New module | T3 |
+| E6 | "Request a persona" button on E2–E5 pages | Micro-feature | None |
+
+## C2. Design rules (bind all four new modules)
+1. **Naming per rights tier** (BRD §4.6): T0 real names · T1 "inspired by X" · T2 archetype titles + nominative "inspired by" descriptions · T3 archetype-only in shipped content (persona *name* field stays user-editable free text — users may rename locally; user content ≠ published content).
+2. **Framing:** every pack sells the *qualities* ("train the discipline Ronaldo is known for"), never impersonation-as-entertainment.
+3. **Chat guardrail (T1/T2 real people):** prompt addition — never fabricate quotes, private facts, or endorsements of the real person; you are an unofficial training persona. UI shows a one-line "Unofficial practice persona — no affiliation or endorsement" disclaimer.
+4. **Exclusions & flags:** Gandhi excluded (Emblems & Names Act) · Mahabharata figures = respectful non-worship framing · politically charged figures (Shivaji, Bhagat Singh) require extra copy review · no images, no voice, no logos, no catchphrases of protected figures anywhere.
+5. **No AI voice cloning** — guidance is text; audio imitation is out of scope (ELVIS-Act class laws + Phase-2 cost).
+
+## C3. Data model & API delta (small)
+```ts
+ModuleId += 'mimicry' | 'icons' | 'screen' | 'anime'
+Pack += inspiration?: {
+  label: string                       // "Inspired by Cristiano Ronaldo"
+  figure: string                      // canonical name — internal (moderation, request matching)
+  rightsTier: 'T0'|'T1'|'T2'|'T3'
+  status: 'public-domain'|'deceased'|'living'|'fictional'
+}
+Persona += inspiration?               // copied from pack at creation; sent on wire;
+                                      // server re-validates (length caps + keyword screen)
+```
+- `buildPersonaPrompt`/`buildGuidePrompt` append the C2-rule-3 guardrail block when `inspiration.status` is `living` or `deceased`.
+- `/api/chat` + `/api/plan`: no endpoint changes; existing caps/moderation/budget apply as-is.
+- E6 request button: modal → free text (≤80 chars) → PostHog `persona_requested {text, module}`. No backend storage at this phase; real queue arrives with accounts (Part B Phase 3).
+
+## C4. Seed roster candidates (final list validated against current interest/trend data at implementation)
+- **T0 (real names, free & clear):** Marcus Aurelius · Miyamoto Musashi · Chanakya · Swami Vivekananda · Nikola Tesla · Marie Curie · Srinivasa Ramanujan · Leonardo da Vinci · Great Gama · Bheema · Arjuna · Sherlock Holmes · Albert Einstein (publicity expired; avoid trademark-styled branding)
+- **T1 (inspired-by, estates active):** Muhammad Ali · Kobe Bryant · Bruce Lee · A.P.J. Abdul Kalam · Steve Jobs · Ustad Zakir Hussain · Nelson Mandela · Milkha Singh · Lata Mangeshkar · Charlie Chaplin · Ayrton Senna · Ratan Tata
+- **T2 (archetype title + nominative description):** Cristiano Ronaldo · Virat Kohli · MS Dhoni · Usain Bolt · Michael Phelps · Serena Williams · Simone Biles · Rafael Nadal · Neeraj Chopra · Mary Kom · David Goggins · Shah Rukh Khan (off-screen) · Meryl Streep · Christian Bale (off-camera) · Elon Musk · A.R. Rahman · Michael Jordan · Roger Federer
+- **T3 (archetype packs; examples of source inspiration only):** genius-inventor (Stark) · night-vigilante (Batman) · relentless-underdog (Rocky) · unstoppable-professional (Wick) · deduction-master (already T0 via Holmes) · free-spirit joy (Geet) · comic chaos (Gogo) · found-family ensemble (Friends) · shonen never-give-up (Goku/Naruto) · discipline-obsessed fighter (Baki) · silent-grit swordsman (Levi) · kind-perseverance (Tanjiro) · routine-is-power (Saitama) · hard-work-beats-talent (Rock Lee)
+
+## C5. Effort & cost (no blow-up)
+- **Code:** Low-Med, ~1–2 days — ModuleId + packs + templates + 4 landing pages + prompt guardrail + request modal.
+- **LLM run cost:** unchanged mechanics; same per-user caps and daily budget hard-stop. Growth in spend = growth in users, linear, already modeled (BRD §10).
+- **Real cost = content curation:** each pack needs traits mapping, gesture, identity script, missions. Seed 4–6 packs/module; expand weekly (content = the moat, §12).
+- **Bundle:** +10–30 KB JSON — negligible.
+
+## C6. Success metrics
+Per-module: landing→persona-created conversion · first wear-session rate · `persona_requested` volume ranked (demand signal for roster expansion) · icons share-card rate (viral loop).
+
+## C7. Open questions (Part C)
+1. **Naming strategy (T2/T3) — OWNER DECISION PENDING** (options + recommendation presented 08 Jul 2026).
+2. Final seed roster → validate against current trending-interest data at implementation time.
+3. **Formal legal review before monetization** — commercial use strengthens publicity-rights claims; revisit tiers before Pro tier launches.
+4. `screen` vs two separate module IDs for Indian vs international cinema — decide at implementation (single module with tags preferred).

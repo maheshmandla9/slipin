@@ -1,5 +1,7 @@
-# BRD v3 — "SlipIN" (working name) · Personality Transformation App
-*Updated: 08 Jul 2026 · Stage 1 of 3 (BRD → PRD → Dev Prompt) · Status: GO (conditional) · Supersedes v2*
+# BRD v4 — "SlipIN" (working name) · Personality Transformation App
+*Updated: 08 Jul 2026 · Stage 1 of 3 (BRD → PRD → Dev Prompt) · Status: GO (conditional) · Supersedes v3*
+
+**v4 changes (08 Jul 2026):** Module Expansion added — Mimicry, Celebrity Icons/Legends, Movie/TV Characters, Anime Characters as new modules + voice/body-language guidance folded into Actor Prep (§4.3) · new §4.6: IP & publicity-rights tier strategy for real-person and fictional-character personas · new risk rows (§15). *Expansion status: spec drafted; naming-strategy decision + build approval pending (see PRD Part C).*
 
 **v3 changes:** market-fit evaluation folded in (§3) · Romantic Partner module **dropped from roadmap** · Audio scene-partner + 3-persona Playground confirmed as **Phase 2, Pro-tier, gated** · positioning guardrail hardened as regulatory shield · voice/LLM economics grounded with current data.
 
@@ -92,6 +94,12 @@ One engine, many skins — user picks a module at entry (or free-hand builds):
 | Physical Transformation | Gym starters / trainers' clients | "Mind before body" 2-week identity prep; B2B2C hook for coaches |
 | Manifestation | Dreamers/goal-setters | See 4.4 |
 | Free-hand | Power users | Build from the full trait/emotion library |
+| Mimicry *(v4)* | Performers, fans, social learners | The **skill** of imitation: observation → posture → gesture → voice → speech-pattern ladder. Teaches technique; the study subject is user-chosen. Legally light (we ship method, not celebrity content) |
+| Celebrity Icons/Legends *(v4)* | Aspirational self-improvers, sports/cinema/art/business fans (India + global) | **Identity** module: adopt the mindset/qualities of iconic figures (living, deceased, historical, mythological) — subject to §4.6 rights tiers. "Request a persona" demand-capture button |
+| Movie/TV Characters *(v4)* | Film fans, actors, Indian + international cinema | Fictional-character personas — §4.6 Tier-3 handling (archetype packs; user may rename locally) |
+| Anime Characters *(v4)* | Anime fans; cosplay/comic-con prep | Same T3 handling; cosplay angle = embodiment practice with a natural event deadline (mirrors Actor "role deadline" mode) |
+
+*(v4)* Actor Prep additionally gains **body-language & voice-imitation guidance** — text drills/techniques only (observation ladders, voice/walk exercises). AI audio voice-cloning is explicitly out of scope (cost + voice-rights laws, e.g. Tennessee ELVIS Act).
 
 - Packs = curated JSON presets (traits + intensities + plan template) → near-zero build cost per new pack, high perceived value, each is a marketing channel.
 
@@ -108,6 +116,29 @@ One engine, many skins — user picks a module at entry (or free-hand builds):
 - After creating a persona, user chats (text) with it: "How do you feel before a job interview?" → replies in-character per traits+intensities.
 - **Cheap & simple:** single LLM call with a persona system-prompt from the trait JSON. No agent framework. Haiku-class ≈ $0.001–0.003/message. Doubles as real-time feedback: user *feels* the persona before committing.
 - Guardrails: rehearsal-mirror framing (coach-in-costume, not a companion), trait safety filter, daily message caps, no romantic/companion mode.
+
+### 4.6 Real-person & fictional-character personas — IP / publicity-rights strategy *(v4)*
+The expansion modules trade on recognizable figures, which imports two distinct legal regimes. **Positioning guardrail applies unchanged:** these are transformation-training personas ("train the mindset of X"), never entertainment chat ("talk to X for fun") — the framing that keeps us out of the Character.AI legal/brand profile documented in §3.3.
+
+**Legal background (as of mid-2026):**
+| Signal | Relevance |
+|---|---|
+| Anil Kapoor v. Simply Life (Delhi HC 2023) | India protects celebrity name/voice/likeness **explicitly incl. AI misuse**; Bachchan 2022 similar. India = core market → real enforcement culture |
+| California post-mortem publicity right (70 yrs) · NO FAKES Act (federal, pending) | Deceased-celebrity AI replicas increasingly regulated in the US |
+| Tennessee ELVIS Act | Voice cloning of real people restricted → AI audio imitation stays out of scope |
+| Hebrew Univ. v. GM (Einstein) | Post-mortem rights DO expire — long-dead figures are largely clear (trademarks may persist on names) |
+| India Emblems & Names Act 1950 | **Mahatma Gandhi excluded from roster** — commercial use of his name/image restricted by statute |
+| Well-delineated character doctrine + studio trademarks | Named fictional characters (Marvel/DC/anime/Bollywood) = copyright + TM exposure; most litigious owners in the space |
+
+**Risk tiers → handling:**
+| Tier | Who | Handling |
+|---|---|---|
+| T0 — public domain / mythological / historical | Marcus Aurelius, Musashi, Chanakya, Vivekananda, Tesla, M. Curie, Ramanujan, Great Gama, Bheema, Arjuna, Sherlock Holmes (PD 2023) | Real names in pack titles; full first-person chat |
+| T1 — deceased, active estates | Ali, Kobe, Bruce Lee, Kalam, Jobs, Chaplin, Zakir Hussain, Mandela | "Inspired by X" naming; no images/voice/likeness; UI disclaimer; estate-sensitivity list maintained (Lee, Kahlo, Ali estates litigious) |
+| T2 — living celebrities | Ronaldo, Kohli, SRK, Musk, Streep, Goggins, Phelps, Bolt | Archetype pack titles + nominative "inspired by X's publicly documented mindset" description; UI disclaimer; anti-defamation prompt guardrail (no fabricated quotes/private facts/endorsements) |
+| T3 — protected fictional characters | Marvel/DC, Goku, Naruto, Geet, Gogo, John Wick, Friends cast | Archetype packs only — no protected names/logos/catchphrases in shipped content; persona name field is user-editable free text (user's local naming ≠ our published content) |
+
+**Additional flags:** religious sentiment (Mahabharata figures → respectful, non-worship framing) · political sensitivity in India (Shivaji, Bhagat Singh) · **formal legal review required before monetization** (commercial use materially strengthens publicity claims).
 
 ## 5. Effectiveness & Real-World Results Strategy
 - **Activation ≤3 min:** pick module → pick pack → avatar dressed → first wear-session. No signup wall.
@@ -213,6 +244,10 @@ Wk1: avatar + library + packs ─► Wk2: plan engine + daily loop ─► Wk3: P
 | Playground entertainment-drift | Med | Med | Phase-gate; Pro-tier; keep tied to transformation framing |
 | Ph2 audio latency/quality | Med | Med | Managed realtime stack, short turns, EN-only first |
 | IP sensitivity (Dispenza/Hawkins) | Low | Med | Inspiration only; no branding/reproduction |
+| Right of publicity — living/deceased celebrities *(v4)* | Med | Med-High | §4.6 tier strategy; nominative "inspired by" use; disclaimers; no images/voice; legal review before monetization |
+| Character copyright/TM — movie & anime personas *(v4)* | Med-High if named | High | T3 archetype packs; protected names never shipped in content JSON; user-side renaming only |
+| Defamation via AI speech (living figures) *(v4)* | Low-Med | High | Prompt guardrail: no fabricated quotes/private facts/endorsements; "unofficial practice persona" UI disclaimer |
+| Positioning drift toward entertainment chat *(v4)* | Med | High | Transformation framing enforced in copy + prompts; same caps; no companion features (§3.3 shield intact) |
 | Copycats | Med | Low-Med | Speed, brand, technique-library depth |
 
 ---

@@ -1,6 +1,7 @@
 # Architecture — living doc, updated at the end of every phase
 
-*Status: MVP complete (end of Phase 5). All P0 features live; deploy = Vercel import + env vars (README).*
+*Status: MVP complete (end of Phase 5) + post-MVP deltas (two-mode chat, local-dev Vite plugin, floating quotes). All P0 features live; deploy = Vercel import + env vars (README).*
+*This doc describes the system **as built**. Approved-but-unbuilt work lives in the PRD — next up: Module Expansion (PRD Part C — Mimicry, Celebrity Icons, Movie/TV, Anime; status: draft pending approval). This section updates when that ships.*
 
 ## 1. User-facing flows
 

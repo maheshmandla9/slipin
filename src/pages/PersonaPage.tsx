@@ -98,9 +98,9 @@ export default function PersonaPage() {
             <Link to="/today" className="rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-white hover:bg-accent/85">
               📅 Start today's practice
             </Link>
-            <span className="rounded-lg bg-ink/5 px-4 py-2 text-sm text-ink/40" title="Coming in Phase 3">
-              💬 Chat — next phase
-            </span>
+            <Link to="/chat" className="rounded-lg border border-accent px-4 py-2 text-sm font-semibold text-accent hover:bg-accent-soft">
+              💬 Chat with {persona.name}
+            </Link>
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 # Architecture — living doc, updated at the end of every phase
 
-*Status: end of Phase 2. Sections marked 🔜 land in later phases.*
+*Status: end of Phase 3. Sections marked 🔜 land in later phases.*
 
 ## 1. User-facing flows
 
@@ -58,20 +58,43 @@ components/avatar/Avatar.tsx   inline SVG silhouette; ZONES const = 5 hit-target
 
 Store shape = `AppState` in `src/types.ts` (mirrors PRD §7). Selectors: `useActivePersona`, `usePlanFor`, `useTodayLog`.
 
-## 4. Backend wiring 🔜 (Phase 3 — designed, not yet built)
+## 4. Backend wiring (live — two Vercel Edge Functions, nothing else)
 
-Two Vercel Edge Functions, nothing else:
-- `POST /api/chat` — body: persona JSON + message history. Builds rehearsal-mirror system prompt at request time; keyword pre-filter + Haiku moderation on input and output; 20 msgs/day/persona.
-- `POST /api/plan` — body: deterministic template plan + persona. Haiku rewrites wording only, strict JSON out; parse failure → template text kept; 3/day.
-- Shared middleware: per-IP rate cap + daily cost counter (Upstash Redis, counters only — no user data; absent → best-effort in-memory), `CHAT_ENABLED`/`POLISH_ENABLED` kill-switches, `DAILY_BUDGET_USD` hard stop, Sentry.
+```
+api/chat.ts   POST {persona, messages[≤12]} — guard order:
+              kill-switch → key present → rate cap → budget → persona validation
+              → 20/day/persona cap → moderation IN → Claude (system prompt built
+              per-request, max_tokens 200) → record spend → moderation OUT → {reply, remaining}
+api/plan.ts   POST {persona, weeks} — same guards (polish cap 3/day) → Claude
+              rewrites wording ONLY, strict JSON → parse + shape check (week count,
+              mission ids, lengths must match exactly) → mismatch = 502, client keeps template
+api/_lib/     env.ts (kill-switches, MODEL, pricing) · counters.ts (Upstash REST
+              w/ in-memory fallback; IPs stored only as FNV hash) · guards.ts
+              (rate 30/hr/IP · chat 20/day/persona · polish 3/day · budget in
+              micro-$ w/ hard stop) · moderation.ts (regex pre-filter for
+              romantic/clinical/harm + Haiku classifier in&out, fails open on
+              infra errors only) · persona.ts (server-side re-validation against
+              the bundled curated library — uncurated traits are rejected;
+              rehearsal-mirror system prompt per PRD §8) · sentry.ts (envelope
+              API via fetch, no-op without DSN)
+```
+
+Key server-trust decision: the browser's persona JSON is **re-validated against the curated content library bundled into the function** — a tampered request with invented traits gets a 400. Moderation blocks return HTTP 200 with `{blocked, category, reply}` where `reply` is an in-character redirect (harm category points to the crisis page). Blocked messages still count against the daily cap.
+
+Client (`src/lib/api.ts`): all LLM calls go through these two endpoints only. Non-JSON responses and network failures are typed as `offline`; every error becomes a friendly inline notice (chat input is preserved on failure; plan polish failure leaves the template plan untouched).
 
 ## 5. Fail-safe behavior
 
 | Failure | Behavior |
 |---|---|
-| Offline / LLM down | App fully usable: builder, plans (template text), daily loop. Chat shows disabled notice 🔜 |
-| Budget hit / kill-switch off | Edge fn returns 503 + reason → UI shows "try later" 🔜 |
-| Moderation block | Generic redirect message, `moderation_blocked` event 🔜 |
+| Offline / LLM down | App fully usable: builder, template plans, daily loop. Chat/polish show inline notice; chat input preserved |
+| Anthropic 4xx/5xx mid-request | 502 `llm_error`, friendly message, error → Sentry; plan keeps template text |
+| Budget hit | 503 `budget_exhausted` — "try again tomorrow" notice |
+| Kill-switch off (`CHAT_ENABLED`/`POLISH_ENABLED`=false) | 503 `chat_disabled`/`polish_disabled` notice |
+| Rate/msg caps | 429 with human message; chat shows remaining-messages counter |
+| Moderation block | HTTP 200, in-character redirect reply (harm → crisis pointer), still counts against cap. `moderation_blocked` PostHog event 🔜 Phase 4 |
+| Upstash not configured | Best-effort per-isolate in-memory counters (dev-friendly; noted in README) |
+| Moderation classifier infra error | Fails open — keyword filter + system-prompt guardrails still apply |
 | localStorage corrupt/full | Export offer + safe reset 🔜 Phase 4 |
 | Invalid content JSON | Throws at startup (dev-time catch, content is version-controlled) |
 

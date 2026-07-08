@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Builder from './pages/Builder';
 import PersonaPage from './pages/PersonaPage';
 import Today from './pages/Today';
+import Chat from './pages/Chat';
 import Crisis from './pages/Crisis';
 
 export default function App() {
@@ -27,6 +28,7 @@ export default function App() {
         <Route path="/build/:moduleId" element={<Builder />} />
         <Route path="/persona" element={<PersonaPage />} />
         <Route path="/today" element={<Today />} />
+        <Route path="/chat" element={<Chat />} />
         <Route path="/crisis" element={<Crisis />} />
       </Routes>
 

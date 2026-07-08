@@ -5,6 +5,7 @@ import { traitById } from '../content';
 import { buildPlan, currentWeek, todaysMissions } from '../engine/planEngine';
 import { computeStreak } from '../engine/streaks';
 import { newId, todayStr, useActivePersona, useAppStore, usePlanFor, useTodayLog } from '../store/appStore';
+import { polishPlan } from '../lib/api';
 import type { DailyLog } from '../types';
 
 function Step({ n, title, done, children }: { n: number; title: string; done: boolean; children?: React.ReactNode }) {
@@ -39,6 +40,30 @@ export default function Today() {
   const [score, setScore] = useState(7);
   const [win, setWin] = useState('');
   const [slip, setSlip] = useState('');
+  const [polishing, setPolishing] = useState(false);
+  const [polishNote, setPolishNote] = useState<string | null>(null);
+
+  const doPolish = async () => {
+    if (!persona || !plan || polishing) return;
+    setPolishing(true);
+    setPolishNote(null);
+    const res = await polishPlan(persona, plan);
+    setPolishing(false);
+    if (!res.ok || !res.weeks) {
+      setPolishNote(res.message ?? 'Polish unavailable — template plan kept.');
+      return;
+    }
+    addPlan({
+      ...plan,
+      polished: true,
+      weeks: plan.weeks.map((w, i) => ({
+        ...w,
+        wearScript: res.weeks![i].wearScript,
+        missions: w.missions.map((m, j) => ({ ...m, text: res.weeks![i].missions[j].text })),
+      })),
+    });
+    setPolishNote(`✨ Rewritten in ${persona.name}'s voice.`);
+  };
 
   const emptyLog = (): DailyLog => ({
     date: todayStr(),
@@ -100,8 +125,21 @@ export default function Today() {
             Week {weekIdx + 1}: {plan.weeks.length > weekIdx ? '' : ''}{focus?.name} · {streak > 0 ? `🔥 ${streak}-day streak` : 'start your streak today'}
           </p>
         </div>
-        <Link to="/persona" className="text-sm text-ink/50 underline">persona</Link>
+        <div className="flex items-center gap-3">
+          {!plan.polished && (
+            <button
+              onClick={() => void doPolish()}
+              disabled={polishing}
+              className="rounded-lg border border-accent/40 px-3 py-1 text-xs font-medium text-accent hover:bg-accent-soft disabled:opacity-50"
+              title="Rewrite missions & scripts in your persona's voice (3/day)"
+            >
+              {polishing ? 'Polishing…' : '✨ Polish wording'}
+            </button>
+          )}
+          <Link to="/persona" className="text-sm text-ink/50 underline">persona</Link>
+        </div>
       </div>
+      {polishNote && <p className="mt-2 rounded-lg bg-accent-soft/60 px-3 py-1.5 text-xs text-ink/70">{polishNote}</p>}
 
       <div className="mt-5 space-y-4">
         {/* 1 — Morning intent */}

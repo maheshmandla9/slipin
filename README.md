@@ -36,6 +36,6 @@ Vercel: import the repo, set env vars above, deploy. The SPA is static; `/api/ch
 - [x] Phase 0 — repo + docs
 - [x] Phase 1 — scaffold, avatar (5 zones), trait/emotion library, packs, free-hand builder, localStorage persistence
 - [x] Phase 2 — deterministic plan engine (focus-trait rotation, difficulty ramp, if-thens, wear scripts) + daily loop (intent → wear → missions → debrief) + streaks
-- [ ] Phase 3 — edge functions (chat + plan polish)
+- [x] Phase 3 — `/api/chat` + `/api/plan` edge functions: persona system prompt, moderation in+out (keyword + Haiku classifier), per-IP rate cap, 20 msgs/day/persona, 3 polishes/day, daily $ budget hard-stop, kill-switches, Sentry; frontend degrades gracefully when any of it is off
 - [ ] Phase 4 — evidence log, 30-day report, share card, analytics
 - [ ] Phase 5 — QA + launch

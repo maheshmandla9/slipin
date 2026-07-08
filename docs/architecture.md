@@ -85,7 +85,9 @@ api/chat.ts   POST {persona, messages[≤12]} — guard order:
 api/plan.ts   POST {persona, weeks} — same guards (polish cap 3/day) → Claude
               rewrites wording ONLY, strict JSON → parse + shape check (week count,
               mission ids, lengths must match exactly) → mismatch = 502, client keeps template
-api/_lib/     env.ts (kill-switches, MODEL, pricing) · counters.ts (Upstash REST
+api/_lib/     anthropic.ts (Messages API over raw fetch — NO SDK: the official
+              SDK imports node:fs/node:path which the Edge runtime can't bundle) ·
+              env.ts (kill-switches, MODEL, pricing) · counters.ts (Upstash REST
               w/ in-memory fallback; IPs stored only as FNV hash) · guards.ts
               (rate 30/hr/IP · chat 20/day/persona · polish 3/day · budget in
               micro-$ w/ hard stop) · moderation.ts (regex pre-filter for

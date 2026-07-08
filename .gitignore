@@ -10,3 +10,5 @@ dist
 # Local Claude Code chat archives (mm-chat-archive) — kept on disk for records,
 # not committed: raw transcripts can contain pasted secrets and are large.
 chat/
+
+.vercel

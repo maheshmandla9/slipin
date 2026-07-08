@@ -1,5 +1,5 @@
-import Anthropic from '@anthropic-ai/sdk';
-import { env, flagEnabled, MODEL } from './_lib/env';
+import { createMessage } from './_lib/anthropic';
+import { env, flagEnabled } from './_lib/env';
 import { checkBudget, checkChatCap, checkRate, recordSpend } from './_lib/guards';
 import { keywordScreen, modelScreen, REDIRECT_REPLY } from './_lib/moderation';
 import { buildSystemPrompt, validatePersona } from './_lib/persona';
@@ -45,17 +45,14 @@ export default async function handler(req: Request): Promise<Response> {
     const cap = await checkChatCap(req, persona.id);
     if (!cap.ok) return fail(cap.status!, cap.code!, cap.message!);
 
-    const client = new Anthropic({ apiKey });
-
     // Moderation IN: keyword screen (name/gesture too — free-ish text) + model screen
     const inputScreen = keywordScreen(`${persona.name} ${persona.gesture} ${last.content}`);
-    const modIn = inputScreen.allowed ? await modelScreen(client, last.content) : inputScreen;
+    const modIn = inputScreen.allowed ? await modelScreen(last.content) : inputScreen;
     if (!modIn.allowed) {
       return json({ blocked: true, category: modIn.category, reply: REDIRECT_REPLY[modIn.category], remaining: cap.remaining });
     }
 
-    const res = await client.messages.create({
-      model: MODEL(),
+    const res = await createMessage({
       max_tokens: 200, // ~150-token replies with headroom
       system: buildSystemPrompt(persona),
       messages: messages.map((m) => ({ role: m.role, content: m.content.slice(0, 1000) })),
@@ -63,14 +60,14 @@ export default async function handler(req: Request): Promise<Response> {
     await recordSpend(res.usage.input_tokens, res.usage.output_tokens);
 
     const reply = res.content
-      .filter((b): b is Extract<typeof b, { type: 'text' }> => b.type === 'text')
-      .map((b) => b.text)
+      .filter((b) => b.type === 'text')
+      .map((b) => b.text ?? '')
       .join('')
       .trim();
     if (!reply) return fail(502, 'empty_reply', 'The persona went quiet — try again.');
 
     // Moderation OUT
-    const modOut = keywordScreen(reply).allowed ? await modelScreen(client, reply) : keywordScreen(reply);
+    const modOut = keywordScreen(reply).allowed ? await modelScreen(reply) : keywordScreen(reply);
     if (!modOut.allowed) {
       return json({ blocked: true, category: modOut.category, reply: REDIRECT_REPLY[modOut.category], remaining: cap.remaining });
     }

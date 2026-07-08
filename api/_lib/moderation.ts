@@ -1,5 +1,4 @@
-import type Anthropic from '@anthropic-ai/sdk';
-import { MODEL } from './env';
+import { createMessage } from './anthropic';
 
 export type ModerationVerdict =
   | { allowed: true }
@@ -35,16 +34,15 @@ ALLOW ordinary self-improvement conversation, including discussing everyday stre
  * infrastructure errors — the keyword screen and the persona system prompt
  * remain as defenses — so an Anthropic hiccup doesn't take chat down twice.
  */
-export async function modelScreen(client: Anthropic, text: string): Promise<ModerationVerdict> {
+export async function modelScreen(text: string): Promise<ModerationVerdict> {
   try {
-    const res = await client.messages.create({
-      model: MODEL(),
+    const res = await createMessage({
       max_tokens: 32,
       system: CLASSIFIER_SYSTEM,
       messages: [{ role: 'user', content: text.slice(0, 2000) }],
     });
     const block = res.content.find((b) => b.type === 'text');
-    const parsed = JSON.parse(block && 'text' in block ? block.text : '{}');
+    const parsed = JSON.parse(block?.text ?? '{}');
     if (parsed.verdict === 'BLOCK') {
       const category = ['romantic', 'clinical', 'harm'].includes(parsed.category) ? parsed.category : 'other';
       return { allowed: false, category };

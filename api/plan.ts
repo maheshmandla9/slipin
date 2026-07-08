@@ -1,5 +1,5 @@
-import Anthropic from '@anthropic-ai/sdk';
-import { env, flagEnabled, MODEL } from './_lib/env';
+import { createMessage } from './_lib/anthropic';
+import { env, flagEnabled } from './_lib/env';
 import { checkBudget, checkPolishCap, checkRate, recordSpend } from './_lib/guards';
 import { buildSystemPrompt, validatePersona } from './_lib/persona';
 import { captureError } from './_lib/sentry';
@@ -53,15 +53,13 @@ export default async function handler(req: Request): Promise<Response> {
     const cap = await checkPolishCap(req);
     if (!cap.ok) return fail(cap.status!, cap.code!, cap.message!);
 
-    const client = new Anthropic({ apiKey });
     const prompt = `Below is a JSON transformation plan. Rewrite ONLY the wording of each mission "text" and each "wearScript" so they sound like they were written by the persona described in your instructions — same meaning, same actions, same structure and numbering, just their voice. Keep every "id" EXACTLY as given. Keep each mission text under 220 characters. Keep wear scripts under 900 characters.
 
 Return ONLY the JSON object, identical shape: {"weeks":[{"missions":[{"id":"...","text":"..."}],"wearScript":"..."}]}. No markdown, no commentary.
 
 ${JSON.stringify({ weeks })}`;
 
-    const res = await client.messages.create({
-      model: MODEL(),
+    const res = await createMessage({
       max_tokens: 4000,
       system: buildSystemPrompt(v.persona),
       messages: [{ role: 'user', content: prompt }],
@@ -69,8 +67,8 @@ ${JSON.stringify({ weeks })}`;
     await recordSpend(res.usage.input_tokens, res.usage.output_tokens);
 
     const text = res.content
-      .filter((b): b is Extract<typeof b, { type: 'text' }> => b.type === 'text')
-      .map((b) => b.text)
+      .filter((b) => b.type === 'text')
+      .map((b) => b.text ?? '')
       .join('')
       .trim()
       .replace(/^```(json)?/i, '')

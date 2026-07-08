@@ -1,7 +1,7 @@
 import { createMessage } from './_lib/anthropic';
 import { env, flagEnabled } from './_lib/env';
 import { checkBudget, checkPolishCap, checkRate, recordSpend } from './_lib/guards';
-import { buildSystemPrompt, validatePersona } from './_lib/persona';
+import { buildPersonaPrompt, validatePersona } from './_lib/persona';
 import { captureError } from './_lib/sentry';
 
 export const config = { runtime: 'edge' };
@@ -61,7 +61,7 @@ ${JSON.stringify({ weeks })}`;
 
     const res = await createMessage({
       max_tokens: 4000,
-      system: buildSystemPrompt(v.persona),
+      system: buildPersonaPrompt(v.persona),
       messages: [{ role: 'user', content: prompt }],
     });
     await recordSpend(res.usage.input_tokens, res.usage.output_tokens);

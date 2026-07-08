@@ -19,7 +19,11 @@
 - One focus trait per week (Franklin rotation), mission difficulty ramps: wk1 easy → wk4 hard.
 - Streak = consecutive days with a debrief; a yesterday-ending streak survives until today is fully missed (`src/engine/streaks.ts`).
 
-**Persona chat** (`/chat`): session-only rehearsal-mirror conversation, 20 msgs/day/persona, moderation both directions — blocked topics get an in-character redirect (harm → crisis page pointer).
+**Chat** (`/chat`): two tabs sharing one endpoint, session-only, 20 msgs/day/persona total, moderation both directions (harm → crisis pointer):
+- **Chat with [name]** — talk to the persona as a *real person* who has the chosen traits: natural, embodied, human, replies free to vary in length (max_tokens 512). The traits shape how they talk, not a script they recite.
+- **Your Personal Guide** (🧭) — a practice coach for the journey: what to practise and how, tricks, if-then plans, debriefs, small assessments. Tight and practical (max_tokens 320). This is the app's original rehearsal-mirror voice, now scoped to its own tab.
+
+Both prompts are built per request from persona JSON and share the same non-negotiable safety boundaries (not a companion/romantic partner, no clinical advice, refuse harm). The mode is a `mode: 'persona'|'guide'` field on the `/api/chat` body.
 
 **Evidence & report**: debrief wins auto-log as evidence; `/evidence` adds manual evidence-hunt entries + 14-day activity dots; `/report` shows then-vs-now scores, trend bars, proof highlights, PNG share card, and JSON export/import.
 
@@ -34,7 +38,7 @@ src/App.tsx             header (APP_NAME) · routes · persistent DisclaimerFoot
   /build/:mod  → pages/Builder.tsx       pack picker → zone editor (Avatar + trait toggles + emotion sliders)
   /persona     → pages/PersonaPage.tsx   dressed avatar + chips + identity script
   /today       → pages/Today.tsx         4-step daily loop; auto-builds plan if missing; ✨ polish button
-  /chat        → pages/Chat.tsx          session-only persona chat (nothing persisted)
+  /chat        → pages/Chat.tsx          two tabs (persona / guide), session-only, separate transcript each
   /evidence    → pages/Evidence.tsx      proof timeline + evidence-hunt input + 14-day dots
   /report      → pages/Report.tsx        then-vs-now stats, score bars, share card, export/import
   /crisis      → pages/Crisis.tsx        crisis resources (footer links here)
@@ -78,10 +82,11 @@ Store shape = `AppState` in `src/types.ts` (mirrors PRD §7). Selectors: `useAct
 ## 4. Backend wiring (live — two Vercel Edge Functions, nothing else)
 
 ```
-api/chat.ts   POST {persona, messages[≤12]} — guard order:
+api/chat.ts   POST {persona, messages[≤12], mode:'persona'|'guide'} — guard order:
               kill-switch → key present → rate cap → budget → persona validation
-              → 20/day/persona cap → moderation IN → Claude (system prompt built
-              per-request, max_tokens 200) → record spend → moderation OUT → {reply, remaining}
+              → 20/day/persona cap → moderation IN → Claude (persona OR guide
+              system prompt per mode, max_tokens 512/320) → record spend →
+              moderation OUT → {reply, remaining}
 api/plan.ts   POST {persona, weeks} — same guards (polish cap 3/day) → Claude
               rewrites wording ONLY, strict JSON → parse + shape check (week count,
               mission ids, lengths must match exactly) → mismatch = 502, client keeps template
@@ -94,8 +99,8 @@ api/_lib/     anthropic.ts (Messages API over raw fetch — NO SDK: the official
               romantic/clinical/harm + Haiku classifier in&out, fails open on
               infra errors only) · persona.ts (server-side re-validation against
               the bundled curated library — uncurated traits are rejected;
-              rehearsal-mirror system prompt per PRD §8) · sentry.ts (envelope
-              API via fetch, no-op without DSN)
+              buildPersonaPrompt + buildGuidePrompt, shared safety boundaries) ·
+              sentry.ts (envelope API via fetch, no-op without DSN)
 ```
 
 Key server-trust decision: the browser's persona JSON is **re-validated against the curated content library bundled into the function** — a tampered request with invented traits gets a 400. Moderation blocks return HTTP 200 with `{blocked, category, reply}` where `reply` is an in-character redirect (harm category points to the crisis page). Blocked messages still count against the daily cap.

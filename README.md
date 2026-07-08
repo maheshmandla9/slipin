@@ -44,6 +44,6 @@ Ops levers in production: `CHAT_ENABLED` / `POLISH_ENABLED` kill-switches, `DAIL
 - [x] Phase 0 — repo + docs
 - [x] Phase 1 — scaffold, avatar (5 zones), trait/emotion library, packs, free-hand builder, localStorage persistence
 - [x] Phase 2 — deterministic plan engine (focus-trait rotation, difficulty ramp, if-thens, wear scripts) + daily loop (intent → wear → missions → debrief) + streaks
-- [x] Phase 3 — `/api/chat` + `/api/plan` edge functions: persona system prompt, moderation in+out (keyword + Haiku classifier), per-IP rate cap, 20 msgs/day/persona, 3 polishes/day, daily $ budget hard-stop, kill-switches, Sentry; frontend degrades gracefully when any of it is off
+- [x] Phase 3 — `/api/chat` + `/api/plan` edge functions: two chat modes (talk to the persona as a real person · Your Personal Guide coach), moderation in+out (keyword + Haiku classifier), per-IP rate cap, 20 msgs/day/persona, 3 polishes/day, daily $ budget hard-stop, kill-switches, Sentry; frontend degrades gracefully when any of it is off
 - [x] Phase 4 — evidence log + streak dots, 30-day then-vs-now report, PNG persona card export, JSON export/import, corrupt-storage recovery banner, PostHog events (no-SDK REST), Sentry FE (envelope API)
 - [x] Phase 5 — QA (offline, LLM-down fallback, keyboard/ARIA/reduced-motion, mobile), per-module landing pages (`/m/<module>`), Vercel deploy config

@@ -2,7 +2,7 @@ import { createMessage } from './_lib/anthropic';
 import { env, flagEnabled } from './_lib/env';
 import { checkBudget, checkChatCap, checkRate, recordSpend } from './_lib/guards';
 import { keywordScreen, modelScreen, REDIRECT_REPLY } from './_lib/moderation';
-import { buildSystemPrompt, validatePersona } from './_lib/persona';
+import { buildGuidePrompt, buildPersonaPrompt, validatePersona } from './_lib/persona';
 import { captureError } from './_lib/sentry';
 
 export const config = { runtime: 'edge' };
@@ -29,10 +29,13 @@ export default async function handler(req: Request): Promise<Response> {
     const budget = await checkBudget();
     if (!budget.ok) return fail(budget.status!, budget.code!, budget.message!);
 
-    const body = (await req.json().catch(() => null)) as { persona?: unknown; messages?: WireMessage[] } | null;
+    const body = (await req.json().catch(() => null)) as { persona?: unknown; messages?: WireMessage[]; mode?: unknown } | null;
     const v = validatePersona(body?.persona);
     if (!v.ok) return fail(400, 'invalid_persona', v.error);
     const persona = v.persona;
+    // Two conversational modes share this endpoint: 'persona' = talk to the
+    // designed character (human, longer); 'guide' = a practice coach (shorter).
+    const mode = body?.mode === 'guide' ? 'guide' : 'persona';
 
     const messages = (body?.messages ?? []).slice(-12).filter(
       (m): m is WireMessage =>
@@ -53,8 +56,10 @@ export default async function handler(req: Request): Promise<Response> {
     }
 
     const res = await createMessage({
-      max_tokens: 200, // ~150-token replies with headroom
-      system: buildSystemPrompt(persona),
+      // Persona replies get room to feel like a real conversation; the guide
+      // stays tight and practical.
+      max_tokens: mode === 'guide' ? 320 : 512,
+      system: mode === 'guide' ? buildGuidePrompt(persona) : buildPersonaPrompt(persona),
       messages: messages.map((m) => ({ role: m.role, content: m.content.slice(0, 1000) })),
     });
     await recordSpend(res.usage.input_tokens, res.usage.output_tokens);

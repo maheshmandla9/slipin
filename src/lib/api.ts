@@ -43,8 +43,14 @@ async function post(path: string, body: unknown): Promise<{ status: number; data
   }
 }
 
-export async function sendChat(persona: Persona, messages: { role: 'user' | 'assistant'; content: string }[]): Promise<ChatResult> {
-  const res = await post('/api/chat', { persona: wirePersona(persona), messages });
+export type ChatMode = 'persona' | 'guide';
+
+export async function sendChat(
+  persona: Persona,
+  messages: { role: 'user' | 'assistant'; content: string }[],
+  mode: ChatMode = 'persona',
+): Promise<ChatResult> {
+  const res = await post('/api/chat', { persona: wirePersona(persona), messages, mode });
   if (!res) return { ok: false, errorCode: 'offline', message: 'Chat needs a connection — everything else works offline.' };
   const d = res.data;
   if (res.status !== 200) return { ok: false, errorCode: String(d.error ?? 'error'), message: String(d.message ?? 'Chat is unavailable.') };
